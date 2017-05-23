@@ -1,5 +1,5 @@
 angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router'])
-.config(function($authProvider, $stateProvider, CONFIG) {
+.config(function($authProvider, $stateProvider, $locationProvider, CONFIG) {
   $authProvider.configure([{
     default: {
       apiUrl: CONFIG.apiUrl
@@ -32,6 +32,7 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router'])
   }])
 
 
+  $locationProvider.html5Mode(true);
 
   $stateProvider.state(
     {
@@ -46,7 +47,7 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router'])
     templateUrl: 'app/views/sessions/session_sign_up.html'
   });
   $stateProvider.state({
-    name:'sign_in_admin',
+    name:'admin_sign_in',
     url:'/admins/sign_in',
     templateUrl:'app/views/sessions/session_admin_sign_in.html'
   });
