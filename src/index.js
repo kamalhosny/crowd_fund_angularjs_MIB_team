@@ -1,9 +1,5 @@
-var app = angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie']);
-
-app.constant('CONFIG',{
-  apiUrl: "http://localhost:3000"
-});
-app.config(function($authProvider, CONFIG) {
+angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router'])
+.config(function($authProvider, $stateProvider, CONFIG) {
   $authProvider.configure([{
     default: {
       apiUrl: CONFIG.apiUrl
@@ -34,72 +30,24 @@ app.config(function($authProvider, CONFIG) {
       // }
     }
   }])
-});
-app.controller('IndexCtrl', function($scope, $auth) {
-  $auth.validateUser().then(
-    function(resp){
-      console.log(resp);
-    }
-  )
-  $scope.handleRegBtnClick = function() {
-    $auth.submitRegistration($scope.registrationForm)
-    .then(function(resp) {
-      // handle success response
-      console.log(resp);
-    })
-    .catch(function(resp) {
-      // handle error response
-      console.log(resp);
-    });
-  }
-  $scope.handleLoginBtnClick = function() {
-    console.log("test");
-    $auth.submitLogin($scope.loginForm)
-    .then(function(resp) {
-      // handle success response
-      console.log(resp);
-    })
-    .catch(function(resp) {
-      // handle error response
-      console.log(resp);
-    });
-  };
-  $scope.handleSignOutBtnClick = function() {
-    $auth.signOut()
-    .then(function(resp) {
-      // handle success response
 
-      console.log(resp);
-    })
-    .catch(function(resp) {
-      // handle error response
-      console.log(resp);
-    });
-  };
 
-  $scope.handleLoginBtnClickAdmin = function() {
-    console.log("test");
-    $auth.submitLogin($scope.loginFormAdmin, {config: 'admin'})
-    .then(function(resp) {
-      // handle success response
-      console.log(resp);
-    })
-    .catch(function(resp) {
-      // handle error response
-      console.log(resp);
-    });
-  };
-  $scope.handleSignOutBtnClickAdmin = function() {
-    $auth.signOut({config: 'admin'})
-    .then(function(resp) {
-      // handle success response
 
-      console.log(resp);
-    })
-    .catch(function(resp) {
-      // handle error response
-      console.log(resp);
-    });
-  };
-
+  $stateProvider.state(
+    {
+    name: 'sign_in',
+    url: '/sign_in',
+    templateUrl: 'app/views/sessions/session_sign_in.html'
+  });
+  $stateProvider.state(
+    {
+    name: 'sign_up',
+    url: '/sign_up',
+    templateUrl: 'app/views/sessions/session_sign_up.html'
+  });
+  $stateProvider.state({
+    name:'sign_in_admin',
+    url:'/admins/sign_in',
+    templateUrl:'app/views/sessions/session_admin_sign_in.html'
+  });
 });

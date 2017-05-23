@@ -69,5 +69,8 @@
     "extends": [
       "xo-space"
     ]
+  },
+  "dependencies": {
+    "angular-ui-router": "^1.0.3"
   }
 }

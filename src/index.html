@@ -6,6 +6,8 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png" />
+  <!-- <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script> -->
+
 
   <!-- build:css({.tmp,src}) styles/vendor.css -->
   <!-- bower:css -->
@@ -20,75 +22,17 @@
 
 
 <body ng-app="crowdFundApp">
-  <div ng-controller="IndexCtrl">
-    <form ng-submit="handleRegBtnClick()" role="form" ng-init="registrationForm = {}">
-      <div class="form-group">
-        <label>email</label>
-        <input type="email" name="email" ng-model="registrationForm.email" required="required" class="form-control"/>
-      </div>
+  <div ng-controller="crowdFundController">
 
-      <div class="form-group">
-        <label>password</label>
-        <input type="password" name="password" ng-model="registrationForm.password" required="required" class="form-control"/>
-      </div>
 
-      <div class="form-group">
-        <label>password confirmation</label>
-        <input type="password" name="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <label>user name</label>
-        <input type="text" name="un" ng-model="registrationForm.username" required="required" class="form-control"/>
-      </div>
-
-      <div class="form-group">
-        <label>age</label>
-        <input type="number" name="un" ng-model="registrationForm.age" required="required" class="form-control"/>
-      </div>
-
-      <div class="form-group">
-        <label>gender</label>
-        <input type="checkbox" name="un" ng-model="registrationForm.gender" ng-init="registrationForm.gender=true" required="required" class="form-control"/>
-      </div>
-
-      <div class="form-group">
-        <label>credit card</label>
-        <input type="number" name="un" ng-model="registrationForm.credit_card" required="required" class="form-control"/>
-      </div>
-
-      <button type="submit" class="btn btn-primary btn-lg">Register</button>
-    </form>
-    <form ng-submit="handleLoginBtnClick()" role="form" ng-init="loginForm = {}">
-      <div class="form-group">
-        <label>email</label>
-        <input type="email" name="email" ng-model="loginForm.email" required="required" class="form-control"/>
-      </div>
-
-      <div class="form-group">
-        <label>password</label>
-        <input type="password" name="password" ng-model="loginForm.password" required="required" class="form-control"/>
-      </div>
-
-      <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
-    </form>
     <button class="btn btn-primary btn-lg" ng-click='handleSignOutBtnClick()'>Sign out</button>
 
-    <form ng-submit="handleLoginBtnClickAdmin()" role="form" ng-init="loginFormAdmin = {}">
-      <div class="form-group">
-        <label>email</label>
-        <input type="email" name="email" ng-model="loginFormAdmin.email" required="required" class="form-control"/>
-      </div>
-
-      <div class="form-group">
-        <label>password</label>
-        <input type="password" name="password" ng-model="loginFormAdmin.password" required="required" class="form-control"/>
-      </div>
-
-      <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
-    </form>
     <button class="btn btn-primary btn-lg" ng-click='handleSignOutBtnClickAdmin()'>Sign out</button>
-  </div>
+    <a ui-sref="sign_in" ui-sref-active="active">Sign In</a>
+    <a ui-sref="sign_up" ui-sref-active="active">Sign Up</a>
 
+    <ui-view></ui-view>
+  </div>
 </body>
 
 <!-- build:js({.tmp,src}) scripts/vendor.js -->
