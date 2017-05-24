@@ -51,4 +51,11 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router'])
     url:'/admins/sign_in',
     templateUrl:'app/views/sessions/session_admin_sign_in.html'
   });
+  $stateProvider.state({
+    name:'campaign_show',
+    url:'/campaigns/:id',
+    templateUrl: 'app/campaigns/campaign.html',
+    controller: 'campaignController'
+  });
+
 });

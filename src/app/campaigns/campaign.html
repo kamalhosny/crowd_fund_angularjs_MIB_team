@@ -1,0 +1,30 @@
+<div ng-controller="campaignController">
+  <h1>{{campaign.title}}</h1>
+  <img ng-src="{{campaign.cover_photo_file_name}}" alt="cover-photo">
+  <img ng-src="{{campaign.profile_photo_file_name}}" alt="profile-photo">
+  <p>
+    <iframe width="420" height="315" ng-src="{{video}}" allowfullscreen></iframe>
+  </p>
+  <button type="button" ng-click="editVideoUrl()" >Edit Video Url</button>
+  <!-- ng-show="owner()" -->
+
+  <p>This campaign started at : {{campaign.created_at}} </p>
+
+  <div id="progressbar-goal">
+    <div id="progressbar-achieved" style="width:{{achievedPercentage}}"></div>
+  </div>
+  <p>{{achievedPercentage}}</p>
+  <p>achieved: {{campaign.achieved}}</p>
+  <p>goal: {{campaign.goal}}</p>
+
+  <h2>About this project</h2>
+  <p>
+    <img ng-src="{{campaign.discription_photo_file_name}}" alt="discription-photo">
+  </p>
+  <p>
+    {{campaign.description}}
+  </p>
+
+
+
+</div>
