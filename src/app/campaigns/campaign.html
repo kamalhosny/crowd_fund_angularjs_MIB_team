@@ -5,7 +5,10 @@
   <p>
     <iframe width="420" height="315" ng-src="{{video}}" allowfullscreen></iframe>
   </p>
-  <button type="button" ng-click="editVideoUrl()" >Edit Video Url</button>
+  <button type="button" ng-click="showEditVideoUrl=!showEditVideoUrl" ng-hide="showEditVideoUrl" ng-init="showEditVideoUrl=false">Edit video url</button>
+  <form ng-submit="editVideoUrl()">
+    <input type="text" name="edit-video" ng-value="campaign.video" ng-model="campaign.video">
+  </form>
   <!-- ng-show="owner()" -->
 
   <p>This campaign started at : {{campaign.created_at}} </p>
@@ -24,7 +27,5 @@
   <p>
     {{campaign.description}}
   </p>
-
-
 
 </div>
