@@ -3,12 +3,6 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router'])
   $authProvider.configure([{
     default: {
       apiUrl: CONFIG.apiUrl
-      // proxyIf: function() { window.isOldIE() },
-      // authProviderPaths: {
-      //   github:    '/auth/github',
-      //   facebook:  '/auth/facebook',
-      //   google:    '/auth/google_oauth2'
-      // }
     }
   }, {
 
@@ -23,11 +17,6 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router'])
       passwordResetPath:     '/admin_auth/password',
       passwordUpdatePath:    '/admin_auth/password',
       tokenValidationPath:   '/admin_auth/validate_token'
-      // authProviderPaths: {
-      //   google:    '/admin_auth/google_oauth2'
-      //   facebook:  '/admin_auth/facebook',
-      //   github:    '/admin_auth/github',
-      // }
     }
   }])
 
@@ -55,14 +44,14 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router'])
     name:'campaigns',
     url:'/campaigns',
     templateUrl:'app/views/campaigns/index_of_campaigns.html',
-    resolve: {
-      auth: function($auth) {
-        return $auth.validateUser();
-      }},
+    // resolve: {
+    //   auth: function($auth) {
+    //     return $auth.validateUser();
+    //   }},
       controller: 'campaignsController'
     })
   $stateProvider.state({
-    name:'campaigns.create',
+    name:'campaigns_create',
     url:'/campaigns/new',
     templateUrl:'app/views/campaigns/create_campaign.html',
     controller: 'campaignsController'
