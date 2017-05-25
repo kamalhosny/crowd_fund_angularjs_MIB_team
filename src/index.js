@@ -43,7 +43,7 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router'])
   $stateProvider.state({
     name:'campaigns',
     url:'/campaigns',
-    templateUrl:'app/views/campaigns/index_of_campaigns.html',
+    templateUrl:'app/campaigns/index_of_campaigns.html',
     // resolve: {
     //   auth: function($auth) {
     //     return $auth.validateUser();
@@ -53,7 +53,7 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router'])
   $stateProvider.state({
     name:'campaigns_create',
     url:'/campaigns/new',
-    templateUrl:'app/views/campaigns/create_campaign.html',
+    templateUrl:'app/campaigns/create_campaign.html',
     controller: 'campaignsController'
   });
 });
