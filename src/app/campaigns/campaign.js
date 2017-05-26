@@ -1,5 +1,24 @@
-angular.module('crowdFundApp').controller('campaignController', function($scope, $http, $stateParams, $sce) {
-  $http.get('http://localhost:3000/campaign/' + $stateParams.id + '.json').then(
+angular.module('crowdFundApp').controller('campaignsController',
+ function($scope, CampaignService, $sce) {
+
+   $scope.addCampaign = function(){
+     CampaignService.createCampaign($scope.campaign)
+     .then(function(success){
+       console.log('campaign added successfully')
+     }, function (error) {
+       console.log(error)
+     }
+   )};
+   CampaignService.getCampaigns().then(
+     function(success){
+       $scope.campaigns = success.data,
+       console.log('got campaigns successfully')
+     },
+     function(error){
+       console.log('failed to get data from the server')
+     })
+
+  CampaignService.getCampaign().then(
     function(success) {
       $scope.campaign = success.data
 
@@ -12,6 +31,6 @@ angular.module('crowdFundApp').controller('campaignController', function($scope,
       $scope.achievedPercentage = String($scope.campaign.achieved * 100 / $scope.campaign.goal) + '%';
     },
     function(err) {
-      console.log(err);
+      console.log('failed to get data from the server');
     });
 });
