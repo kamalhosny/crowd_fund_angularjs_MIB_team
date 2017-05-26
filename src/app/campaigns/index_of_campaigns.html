@@ -1,0 +1,9 @@
+<div ng-controller='campaignsController'>
+  <div ng-repeat='campaign in campaigns'>
+    <!-- todo: adding image tags for this view -->
+    <h1>{{campaign.title}}</h1>
+    <iframe src="campaign.video"></iframe>
+    <p>{{campaign.description}}</p>
+    <progress value="campaign.achieved" max="campaign.goal">0%</progress>
+  </div>
+</div>
