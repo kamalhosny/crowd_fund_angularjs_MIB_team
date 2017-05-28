@@ -1,5 +1,5 @@
-angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router','yaru22.angular-timeago','toaster'])
-  .config(function ($authProvider, $stateProvider, $locationProvider, CONFIG) {
+angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru22.angular-timeago', 'toaster'])
+  .config(function($authProvider, $stateProvider, $locationProvider, CONFIG) {
     $authProvider.configure([{
       default: {
         apiUrl: CONFIG.apiUrl
@@ -58,7 +58,7 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router','yaru22
       templateUrl: 'app/views/campaigns/campaign.new.html',
       controller: 'campaignNew',
       resolve: {
-        auth: function ($auth) {
+        auth: function($auth) {
           return $auth.validateUser();
         }
       },

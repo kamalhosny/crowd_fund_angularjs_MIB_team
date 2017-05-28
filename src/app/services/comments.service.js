@@ -4,7 +4,7 @@ angular.module('crowdFundApp').factory('CommentsService', function($http, $state
     getComments: function() {
       return $http.get(base_url + "/" + $stateParams.id + '/comments.json');
     },
-    createComment: function (data) {
+    createComment: function(data) {
       return $http.post(base_url + "/" + $stateParams.id + '/comments.json', data);
     }
   }

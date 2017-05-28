@@ -38,7 +38,9 @@
     <li ng-repeat="comment in comments" class="comment">
       <p>{{comment.username}}</p>
       <p>{{comment.content}}</p>
-      <p><time-ago from-time='{{comment.created_at}}'></time-ago></p>
+      <p>
+        <time-ago from-time='{{comment.created_at}}'></time-ago>
+      </p>
       <br>
     </li>
   </ul>

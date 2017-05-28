@@ -1,15 +1,15 @@
-angular.module('crowdFundApp').factory('CampaignService', function ($http, $stateParams, CONFIG) {
+angular.module('crowdFundApp').factory('CampaignService', function($http, $stateParams, CONFIG) {
 
   base_url = CONFIG.apiUrl + '/campaign';
 
   return {
-    getCampaigns: function () {
+    getCampaigns: function() {
       return $http.get(base_url + '.json');
     },
-    createCampaign: function (data) {
+    createCampaign: function(data) {
       return $http.post(base_url + '.json', data);
     },
-    getCampaign: function () {
+    getCampaign: function() {
       return $http.get(base_url + "/" + $stateParams.id + '.json');
     },
 
@@ -17,7 +17,7 @@ angular.module('crowdFundApp').factory('CampaignService', function ($http, $stat
     // updateCampaign: function (data, id){
     //   return $http.patch(base_url + id + '.json', data);
     // },
-    deleteCampaign: function (id){
+    deleteCampaign: function(id) {
       return $http.delete(base_url + "/" + $stateParams.id + '.json');
     }
   }

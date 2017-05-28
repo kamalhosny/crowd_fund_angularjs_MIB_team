@@ -24,16 +24,16 @@
 
 
 <body ng-app="crowdFundApp">
-  <div ng-controller="sessionsController" >
+  <div ng-controller="sessionsController">
     <header>
-      <a href="/campaigns" >Explore</a>
-      <a href="/campaigns/new" >Start Campaign</a>
+      <a href="/campaigns">Explore</a>
+      <a href="/campaigns/new">Start Campaign</a>
       <a ui-sref="aboutUs" ui-sref-active="active">About Us</a>
       <a href="/"><h1>Almakinah Crowd Fund</h1></a>
       <a ui-sref="sign_in" ui-sref-active="active" ng-hide="user || admin">Sign In</a>
       <a ui-sref="sign_up" ui-sref-active="active" ng-hide="user || admin">Sign Up</a>
       <button class="btn btn-primary btn-lg" ng-click='handleSignOutBtnClick()' ng-show="user">Sign out</button>
-      <button class="btn btn-primary btn-lg" ng-click='handleSignOutBtnClickAdmin()'ng-show="admin">Sign out</button>
+      <button class="btn btn-primary btn-lg" ng-click='handleSignOutBtnClickAdmin()' ng-show="admin">Sign out</button>
     </header>
     <toaster-container toaster-options="{'time-out': 1500}"></toaster-container>
 
