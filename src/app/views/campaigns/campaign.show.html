@@ -5,7 +5,7 @@
   <p>
     <iframe ng-src="{{video}}" allowfullscreen></iframe>
   </p>
-  <button type="button" ng-click="reomveCampaign()">Delete campaign</button>
+  <button type="button" ng-click="removeCampaign()">Delete campaign</button>
   <button type="button" ng-click="showEditVideoUrl=!showEditVideoUrl" ng-hide="showEditVideoUrl" ng-init="showEditVideoUrl=false">Edit video url</button>
   <form ng-submit="editVideoUrl()">
     <input type="text" name="edit-video" ng-value="campaign.video" ng-model="campaign.video">

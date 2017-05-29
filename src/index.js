@@ -69,6 +69,12 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru2
       templateUrl: 'app/views/campaigns/campaign.show.html',
       controller: 'campaignShow'
     });
+    $stateProvider.state({
+      name: 'admin_campaign',
+      url: '/admins/campaigns',
+      templateUrl: 'app/views/admin/admin.campaign.html',
+      controller: 'adminCampaignCtrl'
+    });
     // $urlRouterProvider.otherwise('/campaigns');
     // $stateProvider.state('otherwise',{
     //     templateUrl: 'app/views/campaigns/campaign.index.html'

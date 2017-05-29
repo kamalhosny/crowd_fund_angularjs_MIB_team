@@ -19,7 +19,7 @@ angular.module('crowdFundApp').controller('commentsCtrl',
           $scope.comments.push(success.data);
         },
         function(error) {
-          console.log(errors);
+          console.log(error);
         }
       )
     }

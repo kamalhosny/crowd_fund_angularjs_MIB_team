@@ -1,5 +1,5 @@
 angular.module('crowdFundApp').controller('campaignShow',
-  function($scope, CampaignService, $sce, $auth) {
+  function($scope, CampaignService, $sce, $auth, $stateParams) {
 
     CampaignService.getCampaign().then(
       function(success) {
@@ -16,8 +16,8 @@ angular.module('crowdFundApp').controller('campaignShow',
       function(err) {
         console.log('failed to get data from the server');
       });
-    $scope.reomveCampaign = function() {
-      CampaignService.deleteCampaign($scope.campaign)
+    $scope.removeCampaign = function() {
+      CampaignService.deleteCampaign($stateParams.id)
         .then(function(success) {
           console.log(success)
         }, function(error) {

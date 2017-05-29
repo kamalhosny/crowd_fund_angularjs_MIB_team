@@ -7,7 +7,6 @@
     "ng-cookies": "^1.1.1",
     "angular-ui-router": "^1.0.3",
     "angular-timeago": "^0.4.5",
-    "angular-moment": "^1.0.1",
     "AngularJS-Toaster": "angularjs-toaster#^2.1.0"
   },
   "devDependencies": {

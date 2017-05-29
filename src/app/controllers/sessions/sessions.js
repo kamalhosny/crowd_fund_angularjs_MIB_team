@@ -1,10 +1,17 @@
 angular.module('crowdFundApp').controller('sessionsController', function($scope, $auth, toaster, $location) {
   $auth.validateUser().then(
-    function(success) {
-      $scope.user = success;
+    function(resp) {
+      if (resp.configName === "default") {
+        $scope.user = resp;
+        $scope.admin = null;
+      } else if (resp.configName === "admin") {
+        $scope.admin = resp;
+        $scope.user = null;
+      }
     },
-    function(err) {
+    function(resp) {
       $scope.user = null;
+      $scope.admin = null;
     }
   );
   $scope.handleRegBtnClick = function() {
@@ -42,6 +49,7 @@ angular.module('crowdFundApp').controller('sessionsController', function($scope,
       .then(function(resp) {
         $scope.admin = resp;
         toaster.pop('success', "Welcome back BOSS !")
+        $location.url('/admins/campaigns');
       })
       .catch(function(resp) {});
   };
