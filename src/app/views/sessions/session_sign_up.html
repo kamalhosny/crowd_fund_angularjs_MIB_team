@@ -1,37 +1,37 @@
-<div ng-controller="crowdFundController">
+<div ng-controller="sessionsController">
   <form ng-submit="handleRegBtnClick()" role="form" ng-init="registrationForm = {}">
     <div class="form-group">
       <label>email</label>
-      <input type="email" name="email" ng-model="registrationForm.email" required="required" class="form-control"/>
+      <input type="email" name="email" ng-model="registrationForm.email" required="required" class="form-control" />
     </div>
 
     <div class="form-group">
       <label>password</label>
-      <input type="password" name="password" ng-model="registrationForm.password" required="required" class="form-control"/>
+      <input type="password" name="password" ng-model="registrationForm.password" required="required" class="form-control" />
     </div>
 
     <div class="form-group">
       <label>password confirmation</label>
-      <input type="password" name="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" class="form-control"/>
+      <input type="password" name="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" class="form-control" />
     </div>
     <div class="form-group">
       <label>user name</label>
-      <input type="text" name="un" ng-model="registrationForm.username" required="required" class="form-control"/>
+      <input type="text" name="un" ng-model="registrationForm.username" required="required" class="form-control" />
     </div>
 
     <div class="form-group">
       <label>age</label>
-      <input type="number" name="un" ng-model="registrationForm.age" required="required" class="form-control"/>
+      <input type="number" name="un" ng-model="registrationForm.age" required="required" class="form-control" />
     </div>
 
     <div class="form-group">
       <label>gender</label>
-      <input type="checkbox" name="un" ng-model="registrationForm.gender" ng-init="registrationForm.gender=true" required="required" class="form-control"/>
+      <input type="checkbox" name="un" ng-model="registrationForm.gender" ng-init="registrationForm.gender=true" required="required" class="form-control" />
     </div>
 
     <div class="form-group">
       <label>credit card</label>
-      <input type="number" name="un" ng-model="registrationForm.credit_card" required="required" class="form-control"/>
+      <input type="number" name="un" ng-model="registrationForm.credit_card" required="required" class="form-control" />
     </div>
 
     <button type="submit" class="btn btn-primary btn-lg">Register</button>

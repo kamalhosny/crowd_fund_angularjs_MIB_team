@@ -1,0 +1,8 @@
+<div ng-controller="adminCampaignCtrl">
+  <ul>
+    <li ng-repeat="campaign in campaigns">
+      <a href="/campaigns/{{campaign.id}}"><img ng-src="{{campaign.profile_photo_file_name}}" alt="profile-photo"/></a>
+      <button type="button" ng-click="removeCampaign(campaign.id)">Delete campaign</button>
+    </li>
+  </ul>
+</div>
