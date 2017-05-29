@@ -1,4 +1,4 @@
-<div ng-controller='campaignsController' ng-init="campaign = {}">
+<div ng-controller='campaignsController' ng-init="campaign = {cover: {}}">
   <form ng-submit='addCampaign()'>
     <p>
     <label for="title">title</label>
@@ -15,6 +15,12 @@
     <p>
     <label for="video">video link</label>
     <input type="url" name="campaign[url]" ng-model='campaign.video'>
+    </p>
+    <p>
+      <label>Upload a Cover Page</label>
+      <img ngf-thumbnail="cover"/>
+      <div class="button" ngf-select ng-model="cover_photo" name="cover" ngf-pattern="'image/*'"
+      ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Select</div>
     </p>
     <button>create campaign</button>
   </form>

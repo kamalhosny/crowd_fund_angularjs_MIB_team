@@ -1,4 +1,4 @@
-angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router'])
+angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router', 'ngFileUpload'])
 .config(function($authProvider, $stateProvider, $locationProvider, CONFIG) {
   $authProvider.configure([{
     default: {
@@ -40,29 +40,21 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router'])
     url:'/admins/sign_in',
     templateUrl:'app/views/sessions/session_admin_sign_in.html'
   });
-  $stateProvider.state({
-<<<<<<< HEAD
-    name:'campaigns',
-    url:'/campaigns',
-    templateUrl:'app/campaigns/index_of_campaigns.html',
-    // resolve: {
-    //   auth: function($auth) {
-    //     return $auth.validateUser();
-    //   }},
-      controller: 'campaignsController'
-    })
+  // $stateProvider.state({
+  //   name:'campaigns',
+  //   url:'/campaigns',
+  //   templateUrl:'app/campaigns/index_of_campaigns.html',
+  //   // resolve: {
+  //   //   auth: function($auth) {
+  //   //     return $auth.validateUser();
+  //   //   }},
+  //   controller: 'campaignsController'
+  //   })
   $stateProvider.state({
     name:'campaigns_create',
     url:'/campaigns/new',
     templateUrl:'app/campaigns/create_campaign.html',
     controller: 'campaignsController'
   });
-=======
-    name:'campaign_show',
-    url:'/campaigns/:id',
-    templateUrl: 'app/campaigns/campaign.html',
-    controller: 'campaignController'
-  });
 
->>>>>>> development
 });
