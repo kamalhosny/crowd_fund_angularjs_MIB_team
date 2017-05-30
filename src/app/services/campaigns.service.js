@@ -13,7 +13,6 @@ angular.module('crowdFundApp').factory('CampaignService', function($http, $state
       return $http.get(base_url + "/" + $stateParams.id + '.json');
     },
     updateCampaign: function(id, data) {
-      debugger
       return $http.put(base_url + "/" + id + '.json', data);
     },
     deleteCampaign: function(id) {
