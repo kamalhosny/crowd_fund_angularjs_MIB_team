@@ -71,6 +71,7 @@
     ]
   },
   "dependencies": {
-    "angular-ui-router": "^1.0.3"
+    "angular-ui-router": "^1.0.3",
+    "angularjs-toaster": "^2.1.0"
   }
 }
