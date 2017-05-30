@@ -1,9 +1,0 @@
-<div ng-controller='campaignsIndex'>
-  <div ng-repeat='campaign in campaigns'>
-    <!-- todo: adding image tags for this view -->
-    <a href="campaigns/{{campaign.id}}"><h1>{{campaign.title}}</h1></a>
-    <iframe src="{{campaign.video}}" allowfullscreen></iframe>
-    <p>{{campaign.description}}</p>
-    <progress value="{{500/campaign.goal}}">0%</progress>
-  </div>
-</div>
