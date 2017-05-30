@@ -1,7 +1,8 @@
 <div ng-controller="campaignShow">
   <h1>{{campaign.title}}</h1>
-  <img ng-src="{{campaign.cover_photo_file_name}}" alt="cover-photo">
-  <img ng-src="{{campaign.profile_photo_file_name}}" alt="profile-photo">
+  <img ng-src="http://localhost:3000{{campaign.cover_photo_url}}" alt="cover-photo">
+  <img ng-src="http://localhost:3000{{campaign.profile_photo_url}}" alt="profile-photo">
+  <img ng-src="http://localhost:3000{{campaign.description_photo_url}}" alt="profile-photo">
   <p>
     <iframe ng-src="{{video}}" allowfullscreen></iframe>
   </p>

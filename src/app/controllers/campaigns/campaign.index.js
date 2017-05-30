@@ -2,6 +2,7 @@ angular.module('crowdFundApp').controller('campaignsIndex',
   function($scope, CampaignService, $sce, $auth) {
     CampaignService.getCampaigns().then(
       function(success) {
+        console.log(success.data)
         $scope.campaigns = success.data;
         for (var i = 0; i < $scope.campaigns.length; i++) {
           if ($scope.campaigns[i].video) {

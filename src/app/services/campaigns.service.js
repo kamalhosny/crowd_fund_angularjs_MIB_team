@@ -1,4 +1,4 @@
-angular.module('crowdFundApp').factory('CampaignService', function($http, $stateParams, CONFIG) {
+angular.module('crowdFundApp').factory('CampaignService', function($http, $stateParams, CONFIG, Upload) {
 
   base_url = CONFIG.apiUrl + '/campaign';
 
@@ -7,8 +7,13 @@ angular.module('crowdFundApp').factory('CampaignService', function($http, $state
       return $http.get(base_url + '.json');
     },
     createCampaign: function(data) {
-      return $http.post(base_url + '.json', data);
+      return Upload.upload({
+        url: base_url + '.json',
+        method: 'post',
+        data: data
+      })
     },
+    // return $http.post(base_url + '.json', data);
     getCampaign: function() {
       return $http.get(base_url + "/" + $stateParams.id + '.json');
     },

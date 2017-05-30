@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router', 'ngFileUpload', 'yaru22.angular-timeago', 'toaster'])
+angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router', 'yaru22.angular-timeago', 'ngFileUpload', 'toaster'])
 .config(function($authProvider, $stateProvider, $locationProvider, CONFIG) {
   $authProvider.configure([{
     default: {
