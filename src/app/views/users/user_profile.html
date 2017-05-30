@@ -1,0 +1,14 @@
+<div >
+  <a href="/users/edit/{{user.id}}">Edit profile</a>
+  <button type="button" ng-click="removeUser()">Delete profile</button>
+  <h1>{{user.username}}</h1>
+  <p>Email: {{user.email}}</p>
+  <p>Email: {{user.profile_picture.url}}</p>
+  <p>Age: {{user.age}}</p>
+  <p>Gender: {{returnGender(user.gender)}}</p>
+  <p>Bio: {{user.bio}}</p>
+  <p>Facebook: {{user.facebook}}</p>
+  <p>Github: {{user.github}}</p>
+  <p>LinkedIn: {{user.linked_in}}</p>
+
+</div>
