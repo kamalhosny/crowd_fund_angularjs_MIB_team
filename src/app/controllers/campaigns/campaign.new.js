@@ -14,12 +14,11 @@ angular.module('crowdFundApp').controller('campaignNew',
         }
       };
       CampaignService.createCampaign(data)
+      .then(function(success) {
+        toaster.pop('success', 'Congratulations!, you added a new campaign')
+        console.log('campaign added successfully')
+      }, function(error) {
+        console.log(error)
+      })
     };
-    // CampaignService.createCampaign($scope.campaign)
-    //   .then(function(success) {
-    //     toaster.pop('success', 'Congratulations!, you added a new campaign')
-    //     console.log('campaign added successfully')
-    //   }, function(error) {
-    //     console.log(error)
-    //   })
   });
