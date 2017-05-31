@@ -1,6 +1,5 @@
 angular.module('crowdFundApp').controller('campaignShow',
-  function($scope, CampaignService, $sce, $auth, $stateParams, Upload) {
-
+  function($scope, CampaignService, $sce, $auth, $stateParams, $state, Upload) {
     CampaignService.getCampaign().then(
       function(success) {
         $scope.campaign = success.data
@@ -23,6 +22,15 @@ angular.module('crowdFundApp').controller('campaignShow',
           console.log(error);
         })
     };
-
-
+    $scope.editVideoUrl = function() {
+      CampaignService.updateCampaign($stateParams.id, $scope.campaign).then(
+        function(success) {
+          $scope.campaign = success.data;
+          $state.reload();
+        },
+        function(error) {
+          console.log(error);
+        }
+      )
+    }
   });

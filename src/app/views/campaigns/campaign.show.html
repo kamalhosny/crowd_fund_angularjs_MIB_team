@@ -6,17 +6,14 @@
   <p>
     <iframe ng-src="{{video}}" allowfullscreen></iframe>
   </p>
-  <button type="button" ng-click="removeCampaign()">Delete campaign</button>
-  <button type="button" ng-click="showEditVideoUrl=!showEditVideoUrl" ng-hide="showEditVideoUrl" ng-init="showEditVideoUrl=false">Edit video url</button>
-  <form ng-submit="editVideoUrl()">
+  <button type="button" ng-click="removeCampaign()" ng-show="(campaign.user_id === user.id) || admin">Delete campaign</button>
+  <button type="button" ng-click="hideEditVideoUrl=!hideEditVideoUrl" ng-show="((campaign.user_id === user.id) || admin) && hideEditVideoUrl" ng-init="hideEditVideoUrl=true">Edit video url</button>
+  <form ng-submit="editVideoUrl(); hideEditVideoUrl=!hideEditVideoUrl" ng-hide="hideEditVideoUrl">
     <input type="text" name="edit-video" ng-value="campaign.video" ng-model="campaign.video">
   </form>
-  <!-- ng-show="owner()" -->
-
   <p>This campaign started at : {{campaign.created_at}} </p>
-  <div id="progressbar-goal">
-    <div id="progressbar-achieved" style="width:{{achievedPercentage}}"></div>
-  </div>
+  <progress value="{{500000/campaign.goal}}"></progress>
+  <!-- {{campaign.achieved/campaign.goal}} -->
   <p>{{achievedPercentage}}</p>
   <p>achieved: {{campaign.achieved}}</p>
   <p>goal: {{campaign.goal}}</p>
@@ -30,13 +27,19 @@
   </p>
 </div>
 <section ng-controller="commentsCtrl">
-  <form ng-submit="addComment()">
+  <form ng-submit="addComment()" ng-show="user || admin">
     <label for="content"></label>
     <input type="text" id="content" ng-model="comment.content">
     <button type="submit"> Add comment</button>
   </form>
   <ul>
     <li ng-repeat="comment in comments" class="comment">
+      <button type="button" ng-click="removeComment(comment.id)" ng-show="(comment.user_id === user.id) || admin">Delete</button>
+      <button type="button" ng-click="showEditComment =! showEditComment" ng-show="(comment.user_id === user.id) || admin" ng-init="showEditComment = false">Edit</button>
+      <form ng-submit="editComment(comment.id); showEditComment =! showEditComment" ng-show="showEditComment">
+        <input type="text" ng-model="comment.content">
+        <button type="submit">submit changes</button>
+      </form>
       <p>{{comment.username}}</p>
       <p>{{comment.content}}</p>
       <p>
