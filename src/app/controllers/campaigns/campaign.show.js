@@ -4,7 +4,6 @@ angular.module('crowdFundApp').controller('campaignShow',
     CampaignService.getCampaign().then(
       function(success) {
         $scope.campaign = success.data
-        console.log($scope.campaign)
         if ($scope.campaign.video) {
           $scope.youTubeVideoUrl = $scope.campaign.video.replace('.com/watch?v=', ".com/embed/");
           $scope.video = $sce.trustAsResourceUrl($scope.youTubeVideoUrl);
