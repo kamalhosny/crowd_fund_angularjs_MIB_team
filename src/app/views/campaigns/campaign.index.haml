@@ -1,0 +1,8 @@
+%div{"ng-controller" => "campaignsIndex"}
+  %div{"ng-repeat" => "campaign in campaigns"}
+    / todo: adding image tags for this view
+    %a{:href => "campaigns/{{campaign.id}}"}
+      %h1 {{campaign.title}}
+    %iframe{:allowfullscreen => "", :src => "{{campaign.video}}"}
+    %p {{campaign.description}}
+    %progress{:value => "{{500/campaign.goal}}"} 0%

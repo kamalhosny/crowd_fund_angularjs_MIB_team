@@ -1,0 +1,15 @@
+%div{"ng-controller" => "campaignNew", "ng-init" => "campaign = {}"}
+  %form{"ng-submit" => "addCampaign()"}
+    %p
+      %label{:for => "title"} title
+      %input#title{:name => "campaign[title]", "ng-model" => "campaign.title", :required => "", :type => "text"}/
+    %p
+      %label{:for => "description"} description
+      %textarea#description{:cols => "80", :name => "campaign[description]", "ng-model" => "campaign.description", :required => "", :rows => "4"}
+    %p
+      %label{:for => "goal"} goal
+      %input#goal{:name => "campaign[goal]", "ng-model" => "campaign.goal", :required => "", :type => "number"}/
+    %p
+      %label{:for => "video"} video link
+      %input{:name => "campaign[url]", "ng-model" => "campaign.video", :type => "url"}/
+    %button create campaign

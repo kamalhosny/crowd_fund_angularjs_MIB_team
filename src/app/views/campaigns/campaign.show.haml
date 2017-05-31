@@ -1,0 +1,34 @@
+%div{"ng-controller" => "campaignShow"}
+  %h1 {{campaign.title}}
+  %img{:alt => "cover-photo", "ng-src" => "{{campaign.cover_photo_file_name}}"}/
+  %img{:alt => "profile-photo", "ng-src" => "{{campaign.profile_photo_file_name}}"}/
+  %p
+    %iframe{:allowfullscreen => "", "ng-src" => "{{video}}"}
+  %button{"ng-click" => "removeCampaign()", :type => "button"} Delete campaign
+  %button{"ng-click" => "showEditVideoUrl=!showEditVideoUrl", "ng-hide" => "showEditVideoUrl", "ng-init" => "showEditVideoUrl=false", :type => "button"} Edit video url
+  %form{"ng-submit" => "editVideoUrl()"}
+    %input{:name => "edit-video", "ng-model" => "campaign.video", "ng-value" => "campaign.video", :type => "text"}/
+  / ng-show="owner()"
+  %p This campaign started at : {{campaign.created_at}}
+  #progressbar-goal
+    #progressbar-achieved{:style => "width:{{achievedPercentage}}"}
+  %p {{achievedPercentage}}
+  %p achieved: {{campaign.achieved}}
+  %p goal: {{campaign.goal}}
+  %h2 About this project
+  %p
+    %img{:alt => "discription-photo", "ng-src" => "{{campaign.discription_photo_file_name}}"}/
+  %p
+    {{campaign.description}}
+%section{"ng-controller" => "commentsCtrl"}
+  %form{"ng-submit" => "addComment()"}
+    %label{:for => "content"}
+    %input#content{"ng-model" => "comment.content", :type => "text"}/
+    %button{:type => "submit"} Add comment
+  %ul
+    %li.comment{"ng-repeat" => "comment in comments"}
+      %p {{comment.username}}
+      %p {{comment.content}}
+      %p
+        %time-ago{"from-time" => "{{comment.created_at}}"}
+      %br/
