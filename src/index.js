@@ -1,5 +1,5 @@
 angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru22.angular-timeago', 'toaster'])
-  .config(function($authProvider, $stateProvider, $locationProvider, CONFIG) {
+  .config(function($authProvider, $stateProvider, $locationProvider, CONFIG, $urlRouterProvider) {
     $authProvider.configure([{
       default: {
         apiUrl: CONFIG.apiUrl
@@ -8,7 +8,6 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru2
 
       admin: {
         apiUrl: CONFIG.apiUrl,
-        // proxyIf:               function () { window.isOldIE() },
         signOutUrl: '/admin_auth/sign_out',
         emailSignInPath: '/admin_auth/sign_in',
         // emailRegistrationPath: 'admin_auth',
@@ -18,9 +17,7 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru2
         passwordUpdatePath: '/admin_auth/password',
         tokenValidationPath: '/admin_auth/validate_token'
       }
-    }])
-
-
+    }]);
     $locationProvider.html5Mode(true);
     $stateProvider.state({
       name: 'landing',
@@ -46,10 +43,6 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru2
       name: 'campaigns',
       url: '/campaigns',
       templateUrl: 'app/views/campaigns/campaign.index.html',
-      // resolve: {
-      //   auth: function ($auth) {
-      //     return $auth.validateUser();
-      //   }},
       controller: 'campaignsIndex'
     })
     $stateProvider.state({
@@ -58,8 +51,8 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru2
       templateUrl: 'app/views/campaigns/campaign.new.html',
       controller: 'campaignNew',
       resolve: {
-        auth: function($auth) {
-          return $auth.validateUser();
+        resolvedUser: function($auth, $state, validationService) {
+          validationService.authenticateDefault($auth, $state)
         }
       },
     });
@@ -73,8 +66,15 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru2
       name: 'admin_campaign',
       url: '/admins/campaigns',
       templateUrl: 'app/views/admin/admin.campaign.html',
-      controller: 'adminCampaignCtrl'
+      controller: 'adminCampaignCtrl',
+      resolve: {
+        resolvedUser: function($auth, $state, validationService) {
+          validationService.authenticateAdmin($auth, $state)
+        },
+      },
     });
+
+    $urlRouterProvider.otherwise('/');
     $stateProvider.state({
       name: 'user_profile_show',
       url: '/users/:id',
@@ -92,5 +92,6 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru2
     //     templateUrl: 'app/views/campaigns/campaign.index.html'
     //     controller: 'campaignsIndex'
     //   });
+
 
   });
