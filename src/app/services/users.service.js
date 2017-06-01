@@ -1,6 +1,6 @@
 angular.module('crowdFundApp').factory('UserService', function($http, $stateParams, CONFIG){
 
-  base_url = CONFIG.apiUrl + '/users/' ;
+  var base_url = CONFIG.apiUrl + '/users/' ;
 
   return {
     getUser: function() {

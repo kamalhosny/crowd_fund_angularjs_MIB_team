@@ -1,4 +1,4 @@
-angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru22.angular-timeago', 'toaster'])
+angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru22.angular-timeago', 'toaster','angularPayments'])
   .config(function($authProvider, $stateProvider, $locationProvider, CONFIG, $urlRouterProvider) {
     $authProvider.configure([{
       default: {
@@ -86,6 +86,12 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru2
       url: '/users/edit/:id',
       templateUrl: 'app/views/users/edit_profile.html',
       controller: 'userEdit'
+    });
+    $stateProvider.state({
+      name: 'payment_form',
+      url: '/campaigns/:id/payment',
+      templateUrl: 'app/views/payment/payment.html',
+      controller: 'payment'
     });
     // $urlRouterProvider.otherwise('/campaigns');
     // $stateProvider.state('otherwise',{

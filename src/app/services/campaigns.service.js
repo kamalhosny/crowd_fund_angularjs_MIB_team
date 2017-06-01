@@ -1,7 +1,5 @@
 angular.module('crowdFundApp').factory('CampaignService', function($http, $stateParams, CONFIG) {
-
-  base_url = CONFIG.apiUrl + '/campaign';
-
+  var base_url = CONFIG.apiUrl + '/campaign';
   return {
     getCampaigns: function() {
       return $http.get(base_url + '.json');
