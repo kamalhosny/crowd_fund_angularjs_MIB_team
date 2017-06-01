@@ -1,5 +1,7 @@
 <div ng-controller='campaignsIndex'>
-  <div ng-repeat='campaign in campaigns'>
+  <label for="filter-done">Accomplished campaigns</label>
+  <input type="checkbox" ng-model="finishedCampaigns" id="filter-done" ng-init="finishedCampaigns=false">
+  <div ng-repeat="campaign in campaigns |filter: finished" >
     <!-- todo: adding image tags for this view -->
     <a href="campaigns/{{campaign.id}}"><h1>{{campaign.title}}</h1></a>
     <iframe src="{{campaign.video}}" allowfullscreen></iframe>

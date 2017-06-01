@@ -12,4 +12,8 @@ angular.module('crowdFundApp').controller('campaignsIndex',
       function(error) {
         toaster.pop('error','failed to get data from the server')
       });
+      $scope.finished=function(campaign){
+        if($scope.finishedCampaigns){return campaign.status}
+        return campaign;
+      }
   });
