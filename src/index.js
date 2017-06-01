@@ -1,4 +1,4 @@
-angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router', 'yaru22.angular-timeago', 'ngFileUpload', 'toaster'])
+angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router', 'yaru22.angular-timeago', 'angularPayments', 'ngFileUpload', 'toaster'])
 .config(function($authProvider, $stateProvider, $locationProvider, CONFIG, $urlRouterProvider) {
   $authProvider.configure([{
     default: {
@@ -9,9 +9,6 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router', 'yaru22
         apiUrl: CONFIG.apiUrl,
         signOutUrl: '/admin_auth/sign_out',
         emailSignInPath: '/admin_auth/sign_in',
-        // emailRegistrationPath: 'admin_auth',
-        // accountUpdatePath:     '/admin_auth',
-        // accountDeletePath:     '/admin_auth',
         passwordResetPath: '/admin_auth/password',
         passwordUpdatePath: '/admin_auth/password',
         tokenValidationPath: '/admin_auth/validate_token'
@@ -86,11 +83,15 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router', 'yaru22
       templateUrl: 'app/views/users/edit_profile.html',
       controller: 'userEdit'
     });
-    // $urlRouterProvider.otherwise('/campaigns');
-    // $stateProvider.state('otherwise',{
-    //     templateUrl: 'app/views/campaigns/campaign.index.html'
-    //     controller: 'campaignsIndex'
-    //   });
-
-
+    $stateProvider.state({
+      name: 'payment_form',
+      url: '/campaigns/:id/payment',
+      templateUrl: 'app/views/payment/payment.html',
+      controller: 'payment',
+      resolve: {
+        resolvedUser: function($auth, $state, validationService) {
+          validationService.authenticateDefault($auth, $state)
+        }
+      },
+    });
   });

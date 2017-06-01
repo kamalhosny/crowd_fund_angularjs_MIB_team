@@ -1,8 +1,11 @@
 <div ng-controller="campaignShow">
   <h1>{{campaign.title}}</h1>
+  <a href="campaigns/{{campaign.id}}/payment">Support this campaign</a>
+
   <img ng-src="http://localhost:3000{{campaign.cover_photo_url}}" alt="cover-photo">
   <img ng-src="http://localhost:3000{{campaign.profile_photo_url}}" alt="profile-photo">
   <img ng-src="http://localhost:3000{{campaign.description_photo_url}}" alt="profile-photo">
+
   <p>
     <iframe ng-src="{{video}}" allowfullscreen></iframe>
   </p>
@@ -12,8 +15,7 @@
     <input type="text" name="edit-video" ng-value="campaign.video" ng-model="campaign.video">
   </form>
   <p>This campaign started at : {{campaign.created_at}} </p>
-  <progress value="{{500000/campaign.goal}}"></progress>
-  <!-- {{campaign.achieved/campaign.goal}} -->
+  <progress value="{{campaign.achieved/campaign.goal}}"></progress>
   <p>{{achievedPercentage}}</p>
   <p>achieved: {{campaign.achieved}}</p>
   <p>goal: {{campaign.goal}}</p>
