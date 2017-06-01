@@ -3,9 +3,7 @@ angular.module('crowdFundApp').controller('payment',
 
     CampaignService.getCampaign().then(
       function(success) {
-        console.log(success);
         $scope.campaign = success.data
-        console.log($scope.campaign);
       }
     )
     // Stripe Response Handler

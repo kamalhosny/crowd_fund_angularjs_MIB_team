@@ -1,4 +1,4 @@
-angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru22.angular-timeago', 'toaster','angularPayments'])
+angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru22.angular-timeago', 'toaster', 'angularPayments'])
   .config(function($authProvider, $stateProvider, $locationProvider, CONFIG, $urlRouterProvider) {
     $authProvider.configure([{
       default: {
@@ -10,9 +10,6 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru2
         apiUrl: CONFIG.apiUrl,
         signOutUrl: '/admin_auth/sign_out',
         emailSignInPath: '/admin_auth/sign_in',
-        // emailRegistrationPath: 'admin_auth',
-        // accountUpdatePath:     '/admin_auth',
-        // accountDeletePath:     '/admin_auth',
         passwordResetPath: '/admin_auth/password',
         passwordUpdatePath: '/admin_auth/password',
         tokenValidationPath: '/admin_auth/validate_token'
@@ -98,11 +95,4 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru2
         }
       },
     });
-    // $urlRouterProvider.otherwise('/campaigns');
-    // $stateProvider.state('otherwise',{
-    //     templateUrl: 'app/views/campaigns/campaign.index.html'
-    //     controller: 'campaignsIndex'
-    //   });
-
-
   });

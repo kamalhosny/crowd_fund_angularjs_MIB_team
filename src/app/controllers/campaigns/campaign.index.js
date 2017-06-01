@@ -1,5 +1,5 @@
 angular.module('crowdFundApp').controller('campaignsIndex',
-  function($scope, CampaignService, $sce, $auth) {
+  function($scope, CampaignService, $sce, $auth,toaster) {
     CampaignService.getCampaigns().then(
       function(success) {
         $scope.campaigns = success.data;
@@ -10,6 +10,6 @@ angular.module('crowdFundApp').controller('campaignsIndex',
         }
       },
       function(error) {
-        console.log('failed to get data from the server')
+        toaster.pop('error','failed to get data from the server')
       });
   });
