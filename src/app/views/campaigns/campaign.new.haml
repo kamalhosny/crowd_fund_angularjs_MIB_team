@@ -1,4 +1,4 @@
-%div{"ng-controller" => "campaignNew", "ng-init" => "campaign = {}"}
+%div{"ng-controller" => "campaignNew", "ng-init" => "campaign = {cover_photo: {}}"}
   %form{"ng-submit" => "addCampaign()"}
     %p
       %label{:for => "title"} title
@@ -12,4 +12,13 @@
     %p
       %label{:for => "video"} video link
       %input{:name => "campaign[url]", "ng-model" => "campaign.video", :type => "url"}/
+    %p
+      %label Upload a Cover Photo
+      %input#file-input{"ng-model" => "campaign.cover_photo", "ngf-select" => "", :type => "file"}/
+    %p
+      %label Upload a profile Photo
+      %input#file-input{"ng-model" => "campaign.profile_photo", "ngf-select" => "", :type => "file"}/
+    %p
+      %label Upload a description Photo
+      %input#file-input{"ng-model" => "campaign.description_photo", "ngf-select" => "", :type => "file"}/
     %button create campaign

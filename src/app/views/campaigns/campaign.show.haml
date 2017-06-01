@@ -1,34 +1,39 @@
 %div{"ng-controller" => "campaignShow"}
   %h1 {{campaign.title}}
-  %img{:alt => "cover-photo", "ng-src" => "{{campaign.cover_photo_file_name}}"}/
-  %img{:alt => "profile-photo", "ng-src" => "{{campaign.profile_photo_file_name}}"}/
-  %p
-    %iframe{:allowfullscreen => "", "ng-src" => "{{video}}"}
-  %button{"ng-click" => "removeCampaign()", :type => "button"} Delete campaign
-  %button{"ng-click" => "showEditVideoUrl=!showEditVideoUrl", "ng-hide" => "showEditVideoUrl", "ng-init" => "showEditVideoUrl=false", :type => "button"} Edit video url
-  %form{"ng-submit" => "editVideoUrl()"}
-    %input{:name => "edit-video", "ng-model" => "campaign.video", "ng-value" => "campaign.video", :type => "text"}/
-  / ng-show="owner()"
-  %p This campaign started at : {{campaign.created_at}}
-  #progressbar-goal
-    #progressbar-achieved{:style => "width:{{achievedPercentage}}"}
-  %p {{achievedPercentage}}
-  %p achieved: {{campaign.achieved}}
-  %p goal: {{campaign.goal}}
-  %h2 About this project
-  %p
-    %img{:alt => "discription-photo", "ng-src" => "{{campaign.discription_photo_file_name}}"}/
-  %p
-    {{campaign.description}}
-%section{"ng-controller" => "commentsCtrl"}
-  %form{"ng-submit" => "addComment()"}
-    %label{:for => "content"}
-    %input#content{"ng-model" => "comment.content", :type => "text"}/
-    %button{:type => "submit"} Add comment
-  %ul
-    %li.comment{"ng-repeat" => "comment in comments"}
-      %p {{comment.username}}
-      %p {{comment.content}}
-      %p
-        %time-ago{"from-time" => "{{comment.created_at}}"}
-      %br/
+  %a{:href => "campaigns/{{campaign.id}}/payment"} Support this campaign
+  %img{:alt => "cover-photo", "ng-src" => "http://localhost:3000{{campaign.cover_photo_url}}"}
+    %img{:alt => "profile-photo", "ng-src" => "http://localhost:3000{{campaign.profile_photo_url}}"}
+      %img{:alt => "profile-photo", "ng-src" => "http://localhost:3000{{campaign.description_photo_url}}"}
+        %p
+          %iframe{"ng-src" => "{{video}}"}
+        %button{"ng-click" => "removeCampaign()", "ng-show" => "(campaign.user_id === user.id) || admin", :type => "button"} Delete campaign
+        %button{"ng-click" => "hideEditVideoUrl=!hideEditVideoUrl", "ng-init" => "hideEditVideoUrl=true", "ng-show" => "((campaign.user_id === user.id) || admin)  hideEditVideoUrl", :type => "button"} Edit video url
+        %form{"ng-hide" => "hideEditVideoUrl", "ng-submit" => "editVideoUrl(); hideEditVideoUrl=!hideEditVideoUrl"}
+          %input{:name => "edit-video", "ng-model" => "campaign.video", "ng-value" => "campaign.video", :type => "text"}
+          %p This campaign started at : {{campaign.created_at}}
+          %progress{:value => "{{campaign.achieved/campaign.goal}}"}
+          %p {{achievedPercentage}}
+          %p achieved: {{campaign.achieved}}
+          %p goal: {{campaign.goal}}
+          %h2 About this project
+          %p
+            %img{:alt => "discription-photo", "ng-src" => "{{campaign.discription_photo_file_name}}"}
+            %p
+              {{campaign.description}}
+          %section{"ng-controller" => "commentsCtrl"}
+            %form{"ng-show" => "user || admin", "ng-submit" => "addComment()"}
+              %label{:for => "content"}
+              %input#content{"ng-model" => "comment.content", :type => "text"}
+                %button{:type => "submit"} Add comment
+              %ul
+                %li.comment{"ng-repeat" => "comment in comments"}
+                  %button{"ng-click" => "removeComment(comment.id)", "ng-show" => "(comment.user_id === user.id) || admin", :type => "button"} Delete
+                  %button{"ng-click" => "showEditComment =! showEditComment", "ng-init" => "showEditComment = false", "ng-show" => "(comment.user_id === user.id) || admin", :type => "button"} Edit
+                  %form{"ng-show" => "showEditComment", "ng-submit" => "editComment(comment.id); showEditComment =! showEditComment"}
+                    %input{"ng-model" => "comment.content", :type => "text"}
+                      %button{:type => "submit"} submit changes
+                    %p {{comment.username}}
+                    %p {{comment.content}}
+                    %p
+                      %time-ago{"from-time" => "{{comment.created_at}}"}
+                    %br

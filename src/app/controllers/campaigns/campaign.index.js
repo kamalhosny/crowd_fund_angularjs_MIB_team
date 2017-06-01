@@ -1,8 +1,9 @@
 (function(){
-  angular.module('alMakinah').controller('campaignsIndex',
-  function($scope, CampaignService, $sce, $auth) {
+  angular.module('crowdFundApp').controller('campaignsIndex',
+  function($scope, CampaignService, $sce, $auth,toaster) {
     CampaignService.getCampaigns().then(
       function(success) {
+        console.log(success.data)
         $scope.campaigns = success.data;
         for (var i = 0; i < $scope.campaigns.length; i++) {
           if ($scope.campaigns[i].video) {
@@ -11,7 +12,11 @@
         }
       },
       function(error) {
-        console.log('failed to get data from the server')
+        toaster.pop('error','failed to get data from the server')
       });
-    });
+      $scope.finished=function(campaign){
+        if($scope.finishedCampaigns){return campaign.status}
+        return campaign;
+      }
+  });
 }).call(this);

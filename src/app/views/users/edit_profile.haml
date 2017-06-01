@@ -1,0 +1,25 @@
+%form{"ng-init" => "user = {}", "ng-submit" => "UpdateUserData()"}
+  %label{:for => "user-name"} Your Name
+  %input#user-name{:name => "user[user-name]", "ng-model" => "user.username", :required => "", :type => "text"}/
+  %br/
+  %label{:for => "email"} Email
+  %input#email{:name => "email", "ng-model" => "user.email", :required => "", :type => "email"}/
+  %br/
+  %label{:for => "age"} Age
+  %input#age{:name => "age", "ng-model" => "user.age", :required => "", :type => "number"}/
+  %br/
+  %label{:for => "bio"} Bio
+  %textarea#bio{:cols => "80", :name => "bio", "ng-model" => "user.bio", :rows => "8"}
+  %br/
+  %label{:for => "linked-in"} LinkedIn Account
+  %input#linked-in{:name => "linked_in", "ng-model" => "user.linked_in", :type => "text"}/
+  %br/
+  %label{:for => "facebook"} Facebook Account
+  %input#facebook{:name => "facebook", "ng-model" => "user.facebook", :type => "text"}/
+  %br/
+  %label{:for => "github"} Github Account
+  %input#github{:name => "github", "ng-model" => "user.github", :type => "text"}/
+  %br/
+  %label{:for => "profile_picture"} profile picture :
+  %input#profile_picture{"ng-model" => "user.profile_picture", "ngf-select" => "", :type => "file"}/
+  %button Submit

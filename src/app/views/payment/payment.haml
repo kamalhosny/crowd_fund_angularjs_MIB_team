@@ -1,0 +1,23 @@
+.container
+  .row
+    .span4.offset4
+      .row
+        %form{:name => "myForm", "stripe-form" => "stripeCallback"}
+          .span3
+            %label{:for => ""} Support with
+            %input{"ng-model" => "amount", :type => "text"}/
+            %span cent
+          .span3
+            %label{:for => "card"} Card number
+            %input#card.input-block-level{:name => "number", "ng-class" => "type", "ng-model" => "number", "payments-format" => "card", "payments-length" => "card", "payments-type-model" => "type", "payments-validate" => "card", :type => "text"}/
+          .span1
+            %label{:for => "expiry"} Expiry
+            %input#expiry.input-block-level{:name => "expiry", "ng-model" => "expiry", "payments-format" => "expiry", "payments-validate" => "expiry", :type => "text"}/
+          .span3
+            %label{:for => "card-name"} Name on card
+            %input#card-name.input-block-level{:type => "text"}/
+          .span1
+            %label{:for => "cvc"} CVC
+            %input#cvc.input-block-level{:name => "cvc", "ng-model" => "cvc", "payments-format" => "cvc", "payments-type-model" => "type", "payments-validate" => "cvc", :type => "text"}/
+          .span4
+            %button.btn.btn-primary.btn-large{:type => "submit"} Submit

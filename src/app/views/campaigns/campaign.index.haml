@@ -1,8 +1,10 @@
 %div{"ng-controller" => "campaignsIndex"}
-  %div{"ng-repeat" => "campaign in campaigns"}
+  %label{:for => "filter-done"} Accomplished campaigns
+  %input#filter-done{"ng-init" => "finishedCampaigns=false", "ng-model" => "finishedCampaigns", :type => "checkbox"}/
+  %div{"ng-repeat" => "campaign in campaigns |filter: finished"}
     / todo: adding image tags for this view
     %a{:href => "campaigns/{{campaign.id}}"}
       %h1 {{campaign.title}}
     %iframe{:allowfullscreen => "", :src => "{{campaign.video}}"}
     %p {{campaign.description}}
-    %progress{:value => "{{500/campaign.goal}}"} 0%
+    %progress{:value => "{{campaign.achieved/campaign.goal}}"} 0%

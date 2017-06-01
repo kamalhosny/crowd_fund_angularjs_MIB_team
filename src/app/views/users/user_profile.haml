@@ -1,0 +1,13 @@
+%div
+  %a{:href => "/users/edit/{{user.id}}"} Edit profile
+  %button{"ng-click" => "removeUser()", :type => "button"} Delete profile
+  %h1 {{user.username}}
+  %p Email: {{user.email}}
+  %p Email: {{user.profile_picture.url}}
+  %p Age: {{user.age}}
+  %p Gender: {{returnGender(user.gender)}}
+  %p Bio: {{user.bio}}
+  %p Facebook: {{user.facebook}}
+  %p Github: {{user.github}}
+  %p LinkedIn: {{user.linked_in}}
+  %img{:alt => "profile_picture", "ng-src" => "http://localhost:3000{{user.profile_picture_url}}"}/
