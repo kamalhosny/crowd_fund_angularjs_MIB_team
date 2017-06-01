@@ -1,10 +1,8 @@
 angular.module('crowdFundApp').controller('campaignShow',
-  function($scope, CampaignService, $sce, $auth, $stateParams, $state) {
-
+  function($scope, CampaignService, $sce, $auth, $stateParams, $state, Upload) {
     CampaignService.getCampaign().then(
       function(success) {
         $scope.campaign = success.data
-
         if ($scope.campaign.video) {
           $scope.youTubeVideoUrl = $scope.campaign.video.replace('.com/watch?v=', ".com/embed/");
           $scope.video = $sce.trustAsResourceUrl($scope.youTubeVideoUrl);
@@ -23,7 +21,7 @@ angular.module('crowdFundApp').controller('campaignShow',
         }, function(error) {
           console.log(error);
         })
-    }
+    };
     $scope.editVideoUrl = function() {
       CampaignService.updateCampaign($stateParams.id, $scope.campaign).then(
         function(success) {

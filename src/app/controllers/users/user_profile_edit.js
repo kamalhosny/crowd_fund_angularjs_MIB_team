@@ -15,7 +15,19 @@ function($scope, UserService, $sce, $auth, toaster, $location, $stateParams) {
     });
 
     $scope.UpdateUserData = function () {
-      UserService.updateUser($scope.user)
+      var data = {
+        user: {
+          user_name: $scope.user.user_name,
+          email: $scope.user.email,
+          age: $scope.user.age,
+          bio: $scope.user.bio,
+          linked_in: $scope.user.linked_in,
+          facebook: $scope.user.facebook,
+          github: $scope.user.github,
+          profile_picture: $scope.user.profile_picture
+        }
+      };
+      UserService.updateUser(data)
       .then(function(success) {
         toaster.pop('success', 'Your data was updated successfully! :)')
         $location.url('/users/'+$scope.user.id);

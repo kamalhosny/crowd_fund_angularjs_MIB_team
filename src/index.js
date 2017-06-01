@@ -1,11 +1,10 @@
-angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru22.angular-timeago', 'toaster', 'angularPayments'])
-  .config(function($authProvider, $stateProvider, $locationProvider, CONFIG, $urlRouterProvider) {
-    $authProvider.configure([{
-      default: {
-        apiUrl: CONFIG.apiUrl
-      }
-    }, {
-
+angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie','ui.router', 'yaru22.angular-timeago', 'angularPayments', 'ngFileUpload', 'toaster'])
+.config(function($authProvider, $stateProvider, $locationProvider, CONFIG, $urlRouterProvider) {
+  $authProvider.configure([{
+    default: {
+      apiUrl: CONFIG.apiUrl
+    }
+  }, {
       admin: {
         apiUrl: CONFIG.apiUrl,
         signOutUrl: '/admin_auth/sign_out',
