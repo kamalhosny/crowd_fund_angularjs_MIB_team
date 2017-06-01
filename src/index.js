@@ -91,7 +91,12 @@ angular.module('crowdFundApp', ['ng-token-auth', 'ipCookie', 'ui.router', 'yaru2
       name: 'payment_form',
       url: '/campaigns/:id/payment',
       templateUrl: 'app/views/payment/payment.html',
-      controller: 'payment'
+      controller: 'payment',
+      resolve: {
+        resolvedUser: function($auth, $state, validationService) {
+          validationService.authenticateDefault($auth, $state)
+        }
+      },
     });
     // $urlRouterProvider.otherwise('/campaigns');
     // $stateProvider.state('otherwise',{

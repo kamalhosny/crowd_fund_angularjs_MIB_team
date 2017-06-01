@@ -14,7 +14,7 @@ angular.module('crowdFundApp').controller('payment',
       if (result.error) {
         toaster.pop('error', result.error.message);
       } else {
-        var amountCents=$scope.amount*100;
+        var amountCents = $scope.amount * 100;
         // Simple POST request example (passing data) :
         PaymentService.postCharge({
           id: result.id,
