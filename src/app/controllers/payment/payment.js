@@ -7,7 +7,7 @@ angular.module('crowdFundApp').controller('payment',
       }
     )
     // Stripe Response Handler
-    Stripe.setPublishableKey('pk_test_xTQpXGarHpdw1K62JcYxZ1ll')
+    Stripe.setPublishableKey(env('PUBLISHABLE_KEY'))
     $scope.stripeCallback = function(code, result) {
       if (result.error) {
         toaster.pop('error', result.error.message);
