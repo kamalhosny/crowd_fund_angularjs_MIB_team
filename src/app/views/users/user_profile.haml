@@ -1,14 +1,15 @@
-%div.container.w-xxl.w-auto-xs.ng-scope.m-t-xl.b-a.wrapper
+%div.container.w-xxl.w-auto-xs.ng-scope.m-t-xl.b-a.wrapper.bg-bright.text-lt
+  %h2.text-center Account details
   %img.img-circle.thumb-lg.pull-right.m-t.sm{:alt => "profile_picture", "ng-src" => "http://localhost:3000{{user.profile_picture_url}}"}
-  %h1 {{user.username}}
-  %hr
-  %h3.m-t.lg Email: {{user.email}}
-  %h3 Age: {{user.age}}
-  %h3 Gender: {{returnGender(user.gender)}}
-  %h3 Bio: {{user.bio}}
-  %h3 Facebook: {{user.facebook}}
-  %h3 Github: {{user.github}}
-  %h3.m-b-lg LinkedIn: {{user.linked_in}}
-  %hr
-  %a.btn.bg-info.pull-right.btn-block{:href => "/users/edit/{{user.id}}"} Edit profile
-  %button.btn-danger.pull-right.btn-block{"ng-click" => "removeUser()", :type => "button"} Delete profile
+  %h2.text-lt {{user.username}}
+  %hr.bg-dark
+  %h4.m-t.lg.text-lt Email: {{user.email}}
+  %h4.text-lt Age: {{user.age}}
+  %h4.text-lt Gender: {{returnGender(user.gender)}}
+  %h4.text-lt Bio: {{user.bio}}
+  %h4.text-lt Facebook: {{user.facebook}}
+  %h4.text-lt Github: {{user.github}}
+  %h4.m-b-lg.text-lt LinkedIn: {{user.linked_in}}
+  %hr.bg-dark
+  %a.btn.bg-primary.btn-block.text-lt{:href => "/users/edit/{{user.id}}"} Edit profile
+  %button.btn-danger.btn-block.text-lt{"ng-click" => "removeUser()", :type => "button"} Delete profile
