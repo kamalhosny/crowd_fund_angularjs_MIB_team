@@ -1,13 +1,15 @@
-%div
-  %a{:href => "/users/edit/{{user.id}}"} Edit profile
-  %button{"ng-click" => "removeUser()", :type => "button"} Delete profile
-  %h1 {{user.username}}
-  %p Email: {{user.email}}
-  %p Email: {{user.profile_picture.url}}
-  %p Age: {{user.age}}
-  %p Gender: {{returnGender(user.gender)}}
-  %p Bio: {{user.bio}}
-  %p Facebook: {{user.facebook}}
-  %p Github: {{user.github}}
-  %p LinkedIn: {{user.linked_in}}
-  %img{:alt => "profile_picture", "ng-src" => "http://localhost:3000{{user.profile_picture_url}}"}/
+%div.container.w-xxl.w-auto-xs.ng-scope.m-t-xl.b-a.wrapper.bg-bright.text-lt
+  %h2.text-center Account details
+  %img.img-circle.thumb-lg.pull-right.m-t.sm{:alt => "profile_picture", "ng-src" => "http://localhost:3000{{user.profile_picture_url}}"}
+  %h2.text-lt {{user.username}}
+  %hr.bg-dark
+  %h4.m-t.lg.text-lt Email: {{user.email}}
+  %h4.text-lt Age: {{user.age}}
+  %h4.text-lt Gender: {{returnGender(user.gender)}}
+  %h4.text-lt Bio: {{user.bio}}
+  %h4.text-lt Facebook: {{user.facebook}}
+  %h4.text-lt Github: {{user.github}}
+  %h4.m-b-lg.text-lt LinkedIn: {{user.linked_in}}
+  %hr.bg-dark
+  %a.btn.bg-primary.btn-block.text-lt{:href => "/users/edit/{{user.id}}"} Edit profile
+  %button.btn-danger.btn-block.text-lt{"ng-click" => "removeUser()", :type => "button"} Delete profile

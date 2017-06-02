@@ -5,7 +5,6 @@
     $locationProvider.html5Mode(true);
     $stateProvider.state({
       name: 'dashboard_layout',
-      // url: '/',
       templateUrl: 'app/views/layouts/dashboard_layout.html',
       abstract: true
     }).state({
@@ -25,12 +24,12 @@
       url: '/admins/sign_in',
       templateUrl: 'app/views/sessions/session_admin_sign_in.html'
     }).state({
-      name: 'campaigns',
+      name: 'dashboard_layout.campaigns',
       url: '/campaigns',
       templateUrl: 'app/views/campaigns/campaign.index.html',
       controller: 'campaignsIndex'
     }).state({
-      name: 'campaigns_create',
+      name: 'dashboard_layout.campaigns_create',
       url: '/campaigns/new',
       templateUrl: 'app/views/campaigns/campaign.new.html',
       controller: 'campaignNew',
@@ -40,7 +39,7 @@
         }
       },
     }).state({
-      name: 'campaign_show',
+      name: 'dashboard_layout.campaign_show',
       url: '/campaigns/:id',
       templateUrl: 'app/views/campaigns/campaign.show.html',
       controller: 'campaignShow'
