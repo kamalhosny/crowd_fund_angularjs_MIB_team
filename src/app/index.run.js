@@ -3,6 +3,5 @@
 (function() {
   angular.module('crowdFundApp').run(function() {
     'ngInject';
-    console.log("hello!");
   });
 }).call(this);
