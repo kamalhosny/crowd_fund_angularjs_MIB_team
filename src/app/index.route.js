@@ -5,23 +5,23 @@
     $locationProvider.html5Mode(true);
     $stateProvider.state({
       name: 'dashboard_layout',
-      url: '/',
+      // url: '/',
       templateUrl: 'app/views/layouts/dashboard_layout.html',
       abstract: true
     }).state({
       name: 'dashboard_layout.landing',
-      url: 'landing',
+      url: '/',
       templateUrl: 'app/views/landing/landing.html'
     }).state({
-      name: 'sign_in',
+      name: 'dashboard_layout.sign_in',
       url: '/sign_in',
       templateUrl: 'app/views/sessions/session_sign_in.html'
     }).state({
-      name: 'sign_up',
+      name: 'dashboard_layout.sign_up',
       url: '/sign_up',
       templateUrl: 'app/views/sessions/session_sign_up.html'
     }).state({
-      name: 'admin_sign_in',
+      name: 'dashboard_layout.admin_sign_in',
       url: '/admins/sign_in',
       templateUrl: 'app/views/sessions/session_admin_sign_in.html'
     }).state({
@@ -45,7 +45,7 @@
       templateUrl: 'app/views/campaigns/campaign.show.html',
       controller: 'campaignShow'
     }).state({
-      name: 'admin_campaign',
+      name: 'dashboard_layout.admin_campaign',
       url: '/admins/campaigns',
       templateUrl: 'app/views/admin/admin.campaign.html',
       controller: 'adminCampaignCtrl',
@@ -55,17 +55,17 @@
         },
       },
     }).state({
-      name: 'user_profile_show',
+      name: 'dashboard_layout.user_profile_show',
       url: '/users/:id',
       templateUrl: 'app/views/users/user_profile.html',
       controller: 'userShow'
     }).state({
-      name: 'user_profile_edit',
+      name: 'dashboard_layout.user_profile_edit',
       url: '/users/edit/:id',
       templateUrl: 'app/views/users/edit_profile.html',
       controller: 'userEdit'
     }).state({
-      name: 'payment_form',
+      name: 'dashboard_layout.payment_form',
       url: '/campaigns/:id/payment',
       templateUrl: 'app/views/payment/payment.html',
       controller: 'payment',
