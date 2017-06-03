@@ -1,15 +1,27 @@
 %div{"ng-controller" => "campaignsIndex", :style => "width: 100%"}
-  %div{"ng-repeat" => "campaign in campaigns |filter: finished", :class => "center col-lg-6", :style => "margin: 0 auto; max-width: 70%"}
-    %div{:class => "blog-post"}
-      %div{:class => "panel"}
-        %div{:class => "wrapper-lg"}
-          %h1{:style => "text-align: center;font-size: 50px"}
-            %a{:href => "campaigns/{{campaign.id}}"} {{campaign.title}}
-          %div
-            %iframe{:allowfullscreen => "", :src => "{{campaign.video}}", :class => "img-full", :style => "height: 500px"}
-          %p{:style => "font-size: 30px; text-align: center;"} {{campaign.description}}
-          %progress{:value => "{{campaign.achieved/campaign.goal}}"} 0%
+  -# %div{"ng-repeat" => "campaign in campaigns |filter: finished", :class => "center col-lg-6", :style => "margin: 0 auto; max-width: 70%"}
+    -# %div{:class => "blog-post"}
+    -#   %div{:class => "panel"}
+    -#     %div{:class => "wrapper-lg"}
+    -#       %h1{:style => "text-align: center;font-size: 50px"}
+    -#         %a{:href => "campaigns/{{campaign.id}}"} {{campaign.title}}
+    -#       %div
+    -#         %iframe{:allowfullscreen => "", :src => "{{campaign.video}}", :class => "img-full", :style => "height: 500px"}
+    -#       %p{:style => "font-size: 30px; text-align: center;"} {{campaign.description}}
+    -#       %progress{:value => "{{campaign.achieved/campaign.goal}}"} 0%
+  %section
+    %h1 Explore Campaigns
+    %div.center
+      %label{:for => "filter-done", :style => "font-size: 30px"} Show only accomplished campaigns
+      %input#filter-done{"ng-init" => "finishedCampaigns=false", "ng-model" => "finishedCampaigns", :type => "checkbox", :style => "transform: scale(2); margin-left: 10px;"}
 
-%div.center
-  %label{:for => "filter-done", :style => "font-size: 30px"} Show only accomplished campaigns
-  %input#filter-done{"ng-init" => "finishedCampaigns=false", "ng-model" => "finishedCampaigns", :type => "checkbox", :style => "transform: scale(2); margin-left: 10px;"}
+    %div.grid
+      %div.col-lg-4{"ng-repeat" =>"campaign in campaigns |filter: finished"}
+        %div
+          %a{:href => "campaigns/{{campaign.id}}"}
+            %div.img-container
+              %img{"ng-src" =>"http://localhost:3000{{campaign.profile_photo_url}}"}
+            %p {{campaign.title}}
+          .progress.progress-bar.progress-bar-warning{"aria-valuemax" => "{{campaign.goal}}", "aria-valuemin" => "0", "aria-valuenow" => "campaign.achieved", :role => "progressbar", :style => "width:{{(campaign.achieved*100/campaign.goal)}}%; height:20px; max-width:100% "} {{campaign.achieved*100/campaign.goal}}%
+          %p goal: {{campaign.goal}}
+          %p achived: {{campaign.achieved}}
