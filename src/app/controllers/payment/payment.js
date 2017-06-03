@@ -1,15 +1,17 @@
 (function(){
   angular.module('crowdFundApp').controller('payment',
     function($scope, $http, CONFIG, PaymentService, toaster, $stateParams, CampaignService) {
-
+      debugger
       CampaignService.getCampaign().then(
         function(success) {
           $scope.campaign = success.data
         }
       )
       // Stripe Response Handler
-      Stripe.setPublishableKey(env('PUBLISHABLE_KEY'))
+      // Stripe.setPublishableKey(env('PUBLISHABLE_KEY'))
+      Stripe.setPublishableKey('pk_test_xTQpXGarHpdw1K62JcYxZ1ll')
       $scope.stripeCallback = function(code, result) {
+        debugger
         if (result.error) {
           toaster.pop('error', result.error.message);
         } else {
@@ -21,6 +23,7 @@
             amount: amountCents,
           }).then(
             function(success) {
+              console.log(success);
               toaster.pop('success', 'your transaction is done successfully');
               $scope.campaign.achieved += $scope.amount;
               if ($scope.campaign.achieved >= $scope.campaign.goal) {
@@ -39,6 +42,7 @@
               }
             },
             function(error) {
+              console.log(error);
               toaster.pop('error', 'Sorry, something gone wrong');
             });
         }

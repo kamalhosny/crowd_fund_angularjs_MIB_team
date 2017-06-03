@@ -14,7 +14,7 @@
       %iframe{"ng-src" => "{{video}}", :class => "img-full", :style => "height: 500px"}
     %p{:class => "margin: 0 auto"}
       %button{"ng-click" => "removeCampaign()", "ng-show" => "(campaign.user_id === user.id) || admin", :type => "button", :class => "btn btn-danger btn-rounded"} Delete campaign
-      %button{"ng-click" => "hideEditVideoUrl=!hideEditVideoUrl", "ng-init" => "hideEditVideoUrl=true", "ng-show" => "((campaign.user_id === user.id) || admin)  hideEditVideoUrl", :type => "button", :class => "btn btn-primary btn-rounded"} Edit video url
+      %button{"ng-click" => "hideEditVideoUrl=!hideEditVideoUrl", "ng-init" => "hideEditVideoUrl=true", "ng-show" => "((campaign.user_id === user.id) || admin) && hideEditVideoUrl", :type => "button", :class => "btn btn-primary btn-rounded"} Edit video url
     %form{"ng-hide" => "hideEditVideoUrl", "ng-submit" => "editVideoUrl(); hideEditVideoUrl=!hideEditVideoUrl"}
       %input{:name => "edit-video", "ng-model" => "campaign.video", "ng-value" => "campaign.video", :type => "text"}
     %p
@@ -44,3 +44,29 @@
               %time-ago{"from-time" => "{{comment.created_at}}"}
             %button{"ng-click" => "removeComment(comment.id)", "ng-show" => "(comment.user_id === user.id) || admin", :type => "button", :class => "btn btn-danger btn-rounded"} Delete
             %button{"ng-click" => "showEditComment =! showEditComment", "ng-init" => "showEditComment = false", "ng-show" => "(comment.user_id === user.id) || admin", :type => "button", :class => "btn btn-primary btn-rounded"} Edit
+  -# %div{:style => "background-image:url('{{url}}{{campaign.cover_photo_url}}'); background-size:cover"}
+  -# .wrapper-lg.bg-white-opacity
+  -#   .row.m-t
+  -#     .col-sm-7
+  -#       %a.thumb-lg.pull-left.m-r{:href => "/users/{{campaign.user_id}}"}
+  -#         %img.img-circle{:src => "{{url}}{{campaign.profile_photo_url}}"}
+  -#       .clear.m-b
+  -#         .m-b.m-t-sm
+  -#           %span.h3.text-black {{campaign.title}}
+  -#           %small.m-l London, UK
+  -#         %p.m-b
+  -#           %a.btn.btn-sm.btn-bg.btn-rounded.btn-default.btn-icon{:href => "{{campaign.github}}"}
+  -#             %i.fa.fa-github
+  -#           %a.btn.btn-sm.btn-bg.btn-rounded.btn-default.btn-icon{:href => "{{campaign.facebook}}"}
+  -#             %i.fa.fa-facebook
+  -#           %a.btn.btn-sm.btn-bg.btn-rounded.btn-default.btn-icon{:href => "{{campaign.linked_in}}"}
+  -#             %i.fa.fa-linkedin
+  -#         %a.btn.btn-sm.btn-success.btn-rounded{:href => "campaigns/{{campaign.id}}/payment"} support this campaign
+  -#     -# .col-sm-5
+  -#     -#   .pull-right.pull-none-xs.text-center
+  -#     -#     %a.m-b-md.inline.m{:href => ""}
+  -#     -#       %span.h3.block.font-bold 2k
+  -#     -#       %small Followers
+  -#     -#     %a.m-b-md.inline.m{:href => ""}
+  -#     -#       %span.h3.block.font-bold 250
+  -#     -#       %small Following

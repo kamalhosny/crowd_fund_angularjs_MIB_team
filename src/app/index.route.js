@@ -6,7 +6,7 @@
     $stateProvider.state({
       name: 'dashboard_layout',
       templateUrl: 'app/views/layouts/dashboard_layout.html',
-      abstract: true
+      abstract:true
     }).state({
       name: 'dashboard_layout.landing',
       url: '/',

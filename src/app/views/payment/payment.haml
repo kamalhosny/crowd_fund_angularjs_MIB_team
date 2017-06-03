@@ -1,23 +1,65 @@
-.container
-  .row
-    .span4.offset4
-      .row
-        %form{:name => "myForm", "stripe-form" => "stripeCallback"}
-          .span3
-            %label{:for => ""} Support with
-            %input{"ng-model" => "amount", :type => "text"}/
-            %span cent
-          .span3
-            %label{:for => "card"} Card number
-            %input#card.input-block-level{:name => "number", "ng-class" => "type", "ng-model" => "number", "payments-format" => "card", "payments-length" => "card", "payments-type-model" => "type", "payments-validate" => "card", :type => "text"}/
-          .span1
-            %label{:for => "expiry"} Expiry
-            %input#expiry.input-block-level{:name => "expiry", "ng-model" => "expiry", "payments-format" => "expiry", "payments-validate" => "expiry", :type => "text"}/
-          .span3
-            %label{:for => "card-name"} Name on card
-            %input#card-name.input-block-level{:type => "text"}/
-          .span1
-            %label{:for => "cvc"} CVC
-            %input#cvc.input-block-level{:name => "cvc", "ng-model" => "cvc", "payments-format" => "cvc", "payments-type-model" => "type", "payments-validate" => "cvc", :type => "text"}/
-          .span4
-            %button.btn.btn-primary.btn-large{:type => "submit"} Submit
+-# .payment-form
+-#   .container
+-#     .row
+-#       .span4.offset4
+-#         .row
+-#           %form{:name => "myForm", "stripe-form" => "stripeCallback"}
+-#             .span3.list-group-item
+-#               %label{:for => ""} Support with
+-#               %input{"ng-model" => "amount", :type => "text"}/
+-#               %span $
+-#             .span3.list-group-item
+-#               %label{:for => "card"} Card number
+-#               %input#card.input-block-level{:name => "number", "ng-class" => "type", "ng-model" => "number", "payments-format" => "card", "payments-length" => "card", "payments-type-model" => "type", "payments-validate" => "card", :type => "text"}/
+-#             .span1.list-group-item
+-#               %label{:for => "expiry"} Expiry
+-#               %input#expiry.input-block-level{:name => "expiry", "ng-model" => "expiry", "payments-format" => "expiry", "payments-validate" => "expiry", :type => "text"}/
+-#             .span3.list-group-item
+-#               %label{:for => "card-name"} Name on card
+-#               %input#card-name.input-block-level{:type => "text"}/
+-#             .span1.list-group-item
+-#               %label{:for => "cvc"} CVC
+-#               %input#cvc.input-block-level{:name => "cvc", "ng-model" => "cvc", "payments-format" => "cvc", "payments-type-model" => "type", "payments-validate" => "cvc", :type => "text"}/
+-#             .span4.list-group-item
+-#               %button.btn.btn-primary.btn-large{:type => "submit"} Submit
+              ////////////////////////////////////////////
+.payment-form
+  .container
+    .row
+      .col-xs-12.col-md-4.col-md-offset-4
+        .panel.panel-default
+          .panel-heading
+            .row
+              %h3.text-center Payment Details
+              %img.img-responsive.cc-img{:src => "http://www.prepbootstrap.com/Content/images/shared/misc/creditcardicons.png"}
+          .panel-body
+            %form{:name => "myForm", "stripe-form" => "stripeCallback"}
+              .row
+                .col-xs-12
+                  .form-group
+                    %label CARD NUMBER
+                    .input-group
+                      %input.form-control{:placeholder => "Card Number",:name => "number", "ng-class" => "type", "ng-model" => "number", "payments-format" => "card", "payments-length" => "card", "payments-type-model" => "type", "payments-validate" => "card", :type => "text"}
+                      %span.input-group-addon
+                        %span.fa.fa-credit-card
+              .row
+                .col-xs-7.col-md-7
+                  .form-group
+                    %label
+                      %span.hidden-xs EXPIRATION
+                      %span.visible-xs-inline EXP
+                      DATE
+                    %input.form-control{:placeholder => "MM/YY",:name => "expiry", "ng-model" => "expiry", "payments-format" => "expiry", "payments-validate" => "expiry", :type => "text"}
+                .col-xs-5.col-md-5.pull-right
+                  .form-group
+                    %label CV CODE
+                    %input.form-control{:placeholder => "CVC",:name => "cvc", "ng-model" => "cvc", "payments-format" => "cvc", "payments-type-model" => "type", "payments-validate" => "cvc", :type => "text"}
+              .row
+                .col-xs-12
+                  .form-group
+                    %label CARD OWNER
+                    %input.form-control{:placeholder => "Card Owner Names", :type => "text"}
+              .panel-footer
+                .row
+                  .col-xs-12
+                    %button.btn.btn-warning.btn-lg.btn-block{:type => "submit"} Process payment

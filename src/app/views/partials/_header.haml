@@ -28,6 +28,6 @@
           %a.text-lt.m-t-sm.navbar-brand{:href => "/users/{{user.id}}"} {{user.username}}
 
         %li
-          %a.btn.btn-primary.m-sm.m-r-sm{"ng-click" => "handleSignOutBtnClick()", "ng-show" => "user"} Sign out
+          %a.btn.btn-warning.m-sm.m-r-sm{"ng-click" => "handleSignOutBtnClick()", "ng-show" => "user"} Sign out
         %li
           %a.btn.btn-primary.m-sm.m-r-sm{"ng-click" => "handleSignOutBtnClickAdmin()", "ng-show" => "admin"} Sign out
