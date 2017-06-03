@@ -1,2 +1,32 @@
-%div{"ng-controller" => "landing"}
-  %h1 Welcome To Our Application
+%div.container{"ng-controller" => "landing"}
+  %section
+    %h1 Success Stories
+    %div#controls
+      %div
+        %carousel{:interval => "carouselTimer"}
+          %slide{:active => "slide.active", "ng-repeat" => "campaign in finishedCampaigns"}
+            %a{:href => "campaigns/{{campaign.id}}"}
+              %div.img-car{:style => 'background-image: url("http://localhost:3000{{campaign.cover_photo_url}}")'}
+              %div.title-car
+                %h2 {{campaign.title}}
+              %div.p-car
+                %p {{campaign.description}}
+                %ul
+                  %li
+                    %p Since {{campaign.created_at}}
+                    %p the campaign Goal was {{campaign.goal}}
+                    %p achieved {{campaign.achieved}}
+  %hr
+  %section
+    %h1 Current campaigns
+    %div.grid
+      %div.col-lg-4{"ng-repeat" => "campaign in unFinishedCampaigns"}
+        %div
+          %a{:href => "campaigns/{{campaign.id}}"}
+            %div.img-container
+              %img{"ng-src" =>"http://localhost:3000{{campaign.profile_photo_url}}"}
+            %p {{campaign.title}}
+          .progress.progress-bar.progress-bar-warning{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "30", :role => "progressbar", :style => "width:{{campaign.achieved*100/campaign.goal}}%; height:20px;"} {{campaign.achieved*100/campaign.goal}}%
+          %p goal: {{campaign.goal}}
+          %p achived: {{campaign.achieved}}
+      %a{:href => "campaigns"} see more >>
