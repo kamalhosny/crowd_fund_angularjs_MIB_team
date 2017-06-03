@@ -2,8 +2,8 @@
   %form{"ng-init" => "loginFormAdmin = {}", "ng-submit" => "handleLoginBtnClickAdmin()", :role => "form"}
     .form-group
       %label email
-      %input.form-control{:name => "email", "ng-model" => "loginFormAdmin.email", :required => "required", :type => "email"}/
+      %input.form-control{:name => "email", "ng-model" => "loginFormAdmin.email", :required => "required", :type => "email"}
     .form-group
       %label password
-      %input.form-control{:name => "password", "ng-model" => "loginFormAdmin.password", :required => "required", :type => "password"}/
+      %input.form-control{:name => "password", "ng-model" => "loginFormAdmin.password", :required => "required", :type => "password"}
     %button.btn.btn-primary.btn-lg{:type => "submit"} Sign in
