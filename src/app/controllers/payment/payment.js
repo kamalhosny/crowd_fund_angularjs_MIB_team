@@ -1,7 +1,7 @@
 (function(){
   angular.module('crowdFundApp').controller('payment',
     function($scope, $http, CONFIG, PaymentService, toaster, $stateParams, CampaignService) {
-      debugger
+
       CampaignService.getCampaign().then(
         function(success) {
           $scope.campaign = success.data
@@ -11,7 +11,7 @@
       // Stripe.setPublishableKey(env('PUBLISHABLE_KEY'))
       Stripe.setPublishableKey('pk_test_xTQpXGarHpdw1K62JcYxZ1ll')
       $scope.stripeCallback = function(code, result) {
-        debugger
+
         if (result.error) {
           toaster.pop('error', result.error.message);
         } else {
