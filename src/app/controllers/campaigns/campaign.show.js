@@ -1,7 +1,6 @@
 (function(){
   angular.module('crowdFundApp').controller('campaignShow',
-  function($scope, CampaignService, $sce, $auth, $stateParams, $state, Upload, CONFIG) {
-    $scope.url = CONFIG.apiUrl;
+  function($scope, CampaignService, $sce, $auth, $stateParams, $state, Upload) {
     CampaignService.getCampaign().then(
       function(success) {
         $scope.campaign = success.data

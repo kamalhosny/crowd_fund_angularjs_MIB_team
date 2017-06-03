@@ -2,23 +2,23 @@
   %form{"ng-init" => "registrationForm = {}", "ng-submit" => "handleRegBtnClick()", :role => "form"}
     .form-group
       %label email
-      %input.form-control{:name => "email", "ng-model" => "registrationForm.email", :required => "required", :type => "email"}
+      %input.form-control{:name => "email", "ng-model" => "registrationForm.email", :required => "required", :type => "email"}/
     .form-group
       %label password
-      %input.form-control{:name => "password", "ng-model" => "registrationForm.password", :required => "required", :type => "password"}
+      %input.form-control{:name => "password", "ng-model" => "registrationForm.password", :required => "required", :type => "password"}/
     .form-group
       %label password confirmation
-      %input.form-control{:name => "password_confirmation", "ng-model" => "registrationForm.password_confirmation", :required => "required", :type => "password"}
+      %input.form-control{:name => "password_confirmation", "ng-model" => "registrationForm.password_confirmation", :required => "required", :type => "password"}/
     .form-group
       %label user name
-      %input.form-control{:name => "un", "ng-model" => "registrationForm.username", :required => "required", :type => "text"}
+      %input.form-control{:name => "un", "ng-model" => "registrationForm.username", :required => "required", :type => "text"}/
     .form-group
       %label age
-      %input.form-control{:name => "un", "ng-model" => "registrationForm.age", :required => "required", :type => "number"}
+      %input.form-control{:name => "un", "ng-model" => "registrationForm.age", :required => "required", :type => "number"}/
     .form-group
       %label gender
-      %input.form-control{:name => "un", "ng-init" => "registrationForm.gender=true", "ng-model" => "registrationForm.gender", :required => "required", :type => "checkbox"}
+      %input.form-control{:name => "un", "ng-init" => "registrationForm.gender=true", "ng-model" => "registrationForm.gender", :required => "required", :type => "checkbox"}/
     .form-group
       %label credit card
-      %input.form-control{:name => "un", "ng-model" => "registrationForm.credit_card", :required => "required", :type => "number"}
+      %input.form-control{:name => "un", "ng-model" => "registrationForm.credit_card", :required => "required", :type => "number"}/
     %button.btn.btn-primary.btn-lg{:type => "submit"} Register

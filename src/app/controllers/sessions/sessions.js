@@ -1,6 +1,6 @@
 (function() {
 
-  angular.module('crowdFundApp').controller('sessionsController', function($scope, $auth, toaster, $state,  $location) {
+  angular.module('crowdFundApp').controller('sessionsController', function($scope, $auth, toaster, $state) {
     $auth.validateUser().then(
       function(resp) {
         if (resp.configName === "default") {
@@ -16,9 +16,6 @@
         $scope.admin = null;
       }
     );
-    $scope.isActive = function (viewLocation) {
-        return viewLocation === $location.path();
-    };
     $scope.handleRegBtnClick = function() {
       $auth.submitRegistration($scope.registrationForm)
         .then(function(resp) {
@@ -31,7 +28,7 @@
         .then(function(resp) {
           $scope.user = resp;
           toaster.pop('success', "welcome back honey!");
-          $state.go('dashboard_layout.landing');
+          $state.go('landing');
         })
         .catch(function(resp) {});
     };

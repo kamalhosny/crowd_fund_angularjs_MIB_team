@@ -5,31 +5,32 @@
     $locationProvider.html5Mode(true);
     $stateProvider.state({
       name: 'dashboard_layout',
+      url: '/',
       templateUrl: 'app/views/layouts/dashboard_layout.html',
       abstract: true
     }).state({
       name: 'dashboard_layout.landing',
-      url: '/',
+      url: 'landing',
       templateUrl: 'app/views/landing/landing.html'
     }).state({
-      name: 'dashboard_layout.sign_in',
+      name: 'sign_in',
       url: '/sign_in',
       templateUrl: 'app/views/sessions/session_sign_in.html'
     }).state({
-      name: 'dashboard_layout.sign_up',
+      name: 'sign_up',
       url: '/sign_up',
       templateUrl: 'app/views/sessions/session_sign_up.html'
     }).state({
-      name: 'dashboard_layout.admin_sign_in',
+      name: 'admin_sign_in',
       url: '/admins/sign_in',
       templateUrl: 'app/views/sessions/session_admin_sign_in.html'
     }).state({
-      name: 'dashboard_layout.campaigns',
+      name: 'campaigns',
       url: '/campaigns',
       templateUrl: 'app/views/campaigns/campaign.index.html',
       controller: 'campaignsIndex'
     }).state({
-      name: 'dashboard_layout.campaigns_create',
+      name: 'campaigns_create',
       url: '/campaigns/new',
       templateUrl: 'app/views/campaigns/campaign.new.html',
       controller: 'campaignNew',
@@ -39,12 +40,12 @@
         }
       },
     }).state({
-      name: 'dashboard_layout.campaign_show',
+      name: 'campaign_show',
       url: '/campaigns/:id',
       templateUrl: 'app/views/campaigns/campaign.show.html',
       controller: 'campaignShow'
     }).state({
-      name: 'dashboard_layout.admin_campaign',
+      name: 'admin_campaign',
       url: '/admins/campaigns',
       templateUrl: 'app/views/admin/admin.campaign.html',
       controller: 'adminCampaignCtrl',
@@ -54,17 +55,17 @@
         },
       },
     }).state({
-      name: 'dashboard_layout.user_profile_show',
+      name: 'user_profile_show',
       url: '/users/:id',
       templateUrl: 'app/views/users/user_profile.html',
       controller: 'userShow'
     }).state({
-      name: 'dashboard_layout.user_profile_edit',
+      name: 'user_profile_edit',
       url: '/users/edit/:id',
       templateUrl: 'app/views/users/edit_profile.html',
       controller: 'userEdit'
     }).state({
-      name: 'dashboard_layout.payment_form',
+      name: 'payment_form',
       url: '/campaigns/:id/payment',
       templateUrl: 'app/views/payment/payment.html',
       controller: 'payment',

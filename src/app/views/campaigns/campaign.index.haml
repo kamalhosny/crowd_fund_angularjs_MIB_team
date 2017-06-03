@@ -1,15 +1,10 @@
-%div{"ng-controller" => "campaignsIndex", :style => "width: 100%"}
-  %div{"ng-repeat" => "campaign in campaigns |filter: finished", :class => "center col-lg-6", :style => "margin: 0 auto; max-width: 70%"}
-    %div{:class => "blog-post"}
-      %div{:class => "panel"}
-        %div{:class => "wrapper-lg"}
-          %h1{:style => "text-align: center;font-size: 50px"}
-            %a{:href => "campaigns/{{campaign.id}}"} {{campaign.title}}
-          %div
-            %iframe{:allowfullscreen => "", :src => "{{campaign.video}}", :class => "img-full", :style => "height: 500px"}
-          %p{:style => "font-size: 30px; text-align: center;"} {{campaign.description}}
-          %progress{:value => "{{campaign.achieved/campaign.goal}}"} 0%
-
-%div.center
-  %label{:for => "filter-done", :style => "font-size: 30px"} Show only accomplished campaigns
-  %input#filter-done{"ng-init" => "finishedCampaigns=false", "ng-model" => "finishedCampaigns", :type => "checkbox", :style => "transform: scale(2); margin-left: 10px;"}
+%div{"ng-controller" => "campaignsIndex"}
+  %label{:for => "filter-done"} Accomplished campaigns
+  %input#filter-done{"ng-init" => "finishedCampaigns=false", "ng-model" => "finishedCampaigns", :type => "checkbox"}/
+  %div{"ng-repeat" => "campaign in campaigns |filter: finished"}
+    / todo: adding image tags for this view
+    %a{:href => "campaigns/{{campaign.id}}"}
+      %h1 {{campaign.title}}
+    %iframe{:allowfullscreen => "", :src => "{{campaign.video}}"}
+    %p {{campaign.description}}
+    %progress{:value => "{{campaign.achieved/campaign.goal}}"} 0%
