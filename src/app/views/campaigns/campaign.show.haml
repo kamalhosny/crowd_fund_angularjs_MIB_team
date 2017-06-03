@@ -2,10 +2,14 @@
   %div{:class => "blog-post"}
     %div{:class => "panel"}
       %h1{:style => "text-align: center", :class => "m-t-none"} {{campaign.title}}
-      %img{:alt => "cover-photo", :style => "display: block; margin: 0 auto", "ng-src" => "{{url}}{{campaign.cover_photo_url}}"}
-      %div{:class => "wrapper-lg"}
+      %div.col-lg-4
+        %img{:alt => "cover-photo", :style => "display: block; width: 100%", "ng-src" => "{{url}}{{campaign.cover_photo_url}}"}
+      %div.col-lg-4
+        %img{:alt => "profile-photo", "ng-src" => "{{url}}{{campaign.profile_photo_url}}", :style => "display: block; width: 100%"}
+      %div.col-lg-4
+        %img{:alt => "description-photo", "ng-src" => "{{url}}{{campaign.description_photo_url}}", :style => "display: block; width: 100%"}
+      %div{:class => "wrapper-lg", :style => "clear: left"}
         %p{:class => "m-t-none", :style => "font-size: 20px"} {{campaign.description}}
-    %img{:alt => "profile-photo", "ng-src" => "{{url}}{{campaign.profile_photo_url}}", :style => "display: block; margin: 0 auto"}
     %p
       %iframe{"ng-src" => "{{video}}", :class => "img-full", :style => "height: 500px"}
     %p{:class => "margin: 0 auto"}
@@ -14,13 +18,12 @@
     %form{"ng-hide" => "hideEditVideoUrl", "ng-submit" => "editVideoUrl(); hideEditVideoUrl=!hideEditVideoUrl"}
       %input{:name => "edit-video", "ng-model" => "campaign.video", "ng-value" => "campaign.video", :type => "text"}
     %p
-      %img{:alt => "description-photo", "ng-src" => "{{url}}{{campaign.description_photo_url}}", :style => "display: block; margin: 20px auto"}
     %p This campaign started at : {{campaign.created_at}}
     %progress{:value => "{{campaign.achieved/campaign.goal}}"}
     %p {{achievedPercentage}}
     %p achieved: {{campaign.achieved}}
     %p goal: {{campaign.goal}}
-    %button{:class => "btn btn-success btn-rounded"}
+    %button{:class => "btn btn-success btn-rounded col-lg-12"}
       %a{:href => "campaigns/{{campaign.id}}/payment", :style => "color: white"} Support this campaign
     %h2 Add your commment
     %section{"ng-controller" => "commentsCtrl"}

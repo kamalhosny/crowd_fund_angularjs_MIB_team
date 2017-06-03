@@ -7,7 +7,6 @@
             %a{:href => "campaigns/{{campaign.id}}"} {{campaign.title}}
           %div
             %iframe{:allowfullscreen => "", :src => "{{campaign.video}}", :class => "img-full", :style => "height: 500px"}
-          %p{:style => "font-size: 30px; text-align: center;"} {{campaign.description}}
           %progress{:value => "{{campaign.achieved/campaign.goal}}"} 0%
 
 %div.center
