@@ -10,7 +10,7 @@
       %iframe{"ng-src" => "{{video}}", :class => "img-full", :style => "height: 500px"}
     %p{:class => "margin: 0 auto"}
       %button{"ng-click" => "removeCampaign()", "ng-show" => "(campaign.user_id === user.id) || admin", :type => "button", :class => "btn btn-danger btn-rounded"} Delete campaign
-      %button{"ng-click" => "hideEditVideoUrl=!hideEditVideoUrl", "ng-init" => "hideEditVideoUrl=true", "ng-show" => "((campaign.user_id === user.id) || admin)  hideEditVideoUrl", :type => "button", :class => "btn btn-primary btn-rounded"} Edit video url
+      %button{"ng-click" => "hideEditVideoUrl=!hideEditVideoUrl", "ng-init" => "hideEditVideoUrl=true", "ng-show" => "((campaign.user_id === user.id) || admin) && hideEditVideoUrl", :type => "button", :class => "btn btn-primary btn-rounded"} Edit video url
     %form{"ng-hide" => "hideEditVideoUrl", "ng-submit" => "editVideoUrl(); hideEditVideoUrl=!hideEditVideoUrl"}
       %input{:name => "edit-video", "ng-model" => "campaign.video", "ng-value" => "campaign.video", :type => "text"}
     %p
