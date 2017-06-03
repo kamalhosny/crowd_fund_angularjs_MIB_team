@@ -6,10 +6,10 @@
         if (user.configName === 'default') {
           return user;
         } else {
-          $state.go('dashboard_layout.landing');
+          $state.go('landing');
         }
       }, function(_error) {
-        $state.go('dashboard_layout.sign_in');
+        $state.go('sign_in');
       });
     },
     authenticateAdmin: function($auth, $state) {
@@ -17,10 +17,10 @@
         if (user.configName === 'admin') {
           return user;
         } else {
-          $state.go('dashboard_layout.admin_sign_in');
+          $state.go('admin_sign_in');
         }
       }, function(_error) {
-        $state.go('dashboard_layout.admin_sign_in');
+        $state.go('admin_sign_in');
       });
     }
 

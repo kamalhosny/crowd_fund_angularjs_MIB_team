@@ -1,36 +1,25 @@
-%h2.text-center.container Update your data
-%div.container.w-xxl.w-auto-xs.ng-scope.m-t-xl.b-a.wrapper.bg-bright
-  %form.bs-example.form-horizontal.ng-pristine.ng-valid.form-validation.ng-invalid.ng-invalid-required.ng-valid-email{"ng-init" => "user = {}", "ng-submit" => "UpdateUserData()"}
-    %div.form-group
-      %label.col-sm-4.control-label.text-lt{:for => "user-name"} Your Name
-      %div.col-sm-8
-        %input#user-name.rounded.form-control.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required{:name => "user[user-name]", "ng-model" => "user.username", :required => "", :type => "text"}
-    %div.form-group
-      %label.col-sm-4.control-label.text-lt{:for => "email"} Email
-      %div.col-sm-8
-        %input#email.rounded.form-control.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required{:name => "email", "ng-model" => "user.email", :required => "", :type => "email"}
-    %div.form-group
-      %label.col-sm-4.control-label.text-lt{:for => "age"} Age
-      %div.col-sm-8
-        %input#age.rounded.form-control.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required{:name => "age", "ng-model" => "user.age", :required => "", :type => "number"}
-    %div.form-group
-      %label.col-sm-4.control-label.text-lt{:for => "bio"} Bio
-      %div.col-sm-8
-        %textarea#bio.w-full.form-control.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required{ :name => "bio", "ng-model" => "user.bio", :rows => "8"}
-    %div.form-group
-      %label.col-sm-4.control-label.text-lt{:for => "linked-in"} LinkedIn Account
-      %div.col-sm-8
-        %input#linked-in.rounded.form-control.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required{:name => "linked_in", "ng-model" => "user.linked_in", :type => "text"}
-    %div.form-group
-      %label.col-sm-4.control-label.text-lt{:for => "facebook"} Facebook Account
-      %div.col-sm-8
-        %input#facebook.rounded.form-control.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required{:name => "facebook", "ng-model" => "user.facebook", :type => "text"}
-    %div.form-group
-      %label.col-sm-4.control-label.text-lt{:for => "github"} Github Account
-      %div.col-sm-8
-        %input#github.rounded.form-control.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required{:name => "github", "ng-model" => "user.github", :type => "text"}
-    %div.form-group
-      %label.col-sm-4.control-label.text-lt{:for => "profile_picture"} Profile picture:
-      %div.col-sm-8
-        %input#profile_picture{"ng-model" => "user.profile_picture", "ngf-select" => "", :type => "file"}
-    %button.btn.btn-lg.btn-info.btn-block.text-lt Submit
+%form{"ng-init" => "user = {}", "ng-submit" => "UpdateUserData()"}
+  %label{:for => "user-name"} Your Name
+  %input#user-name{:name => "user[user-name]", "ng-model" => "user.username", :required => "", :type => "text"}/
+  %br/
+  %label{:for => "email"} Email
+  %input#email{:name => "email", "ng-model" => "user.email", :required => "", :type => "email"}/
+  %br/
+  %label{:for => "age"} Age
+  %input#age{:name => "age", "ng-model" => "user.age", :required => "", :type => "number"}/
+  %br/
+  %label{:for => "bio"} Bio
+  %textarea#bio{:cols => "80", :name => "bio", "ng-model" => "user.bio", :rows => "8"}
+  %br/
+  %label{:for => "linked-in"} LinkedIn Account
+  %input#linked-in{:name => "linked_in", "ng-model" => "user.linked_in", :type => "text"}/
+  %br/
+  %label{:for => "facebook"} Facebook Account
+  %input#facebook{:name => "facebook", "ng-model" => "user.facebook", :type => "text"}/
+  %br/
+  %label{:for => "github"} Github Account
+  %input#github{:name => "github", "ng-model" => "user.github", :type => "text"}/
+  %br/
+  %label{:for => "profile_picture"} profile picture :
+  %input#profile_picture{"ng-model" => "user.profile_picture", "ngf-select" => "", :type => "file"}/
+  %button Submit

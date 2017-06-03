@@ -1,43 +1,39 @@
-%div{"ng-controller" => "campaignShow", :class => " center"}
-  %div{:class => "blog-post"}
-    %div{:class => "panel"}
-      %h1{:style => "text-align: center", :class => "m-t-none"} {{campaign.title}}
-      %img{:alt => "cover-photo", :style => "display: block; margin: 0 auto", "ng-src" => "{{url}}{{campaign.cover_photo_url}}"}
-      %div{:class => "wrapper-lg"}
-        %p{:class => "m-t-none", :style => "font-size: 20px"} {{campaign.description}}
-    %img{:alt => "profile-photo", "ng-src" => "{{url}}{{campaign.profile_photo_url}}", :style => "display: block; margin: 0 auto"}
-    %p
-      %iframe{"ng-src" => "{{video}}", :class => "img-full", :style => "height: 500px"}
-    %p{:class => "margin: 0 auto"}
-      %button{"ng-click" => "removeCampaign()", "ng-show" => "(campaign.user_id === user.id) || admin", :type => "button", :class => "btn btn-danger btn-rounded"} Delete campaign
-      %button{"ng-click" => "hideEditVideoUrl=!hideEditVideoUrl", "ng-init" => "hideEditVideoUrl=true", "ng-show" => "((campaign.user_id === user.id) || admin)  hideEditVideoUrl", :type => "button", :class => "btn btn-primary btn-rounded"} Edit video url
-    %form{"ng-hide" => "hideEditVideoUrl", "ng-submit" => "editVideoUrl(); hideEditVideoUrl=!hideEditVideoUrl"}
-      %input{:name => "edit-video", "ng-model" => "campaign.video", "ng-value" => "campaign.video", :type => "text"}
-    %p
-      %img{:alt => "description-photo", "ng-src" => "{{url}}{{campaign.description_photo_url}}", :style => "display: block; margin: 20px auto"}
-    %p This campaign started at : {{campaign.created_at}}
-    %progress{:value => "{{campaign.achieved/campaign.goal}}"}
-    %p {{achievedPercentage}}
-    %p achieved: {{campaign.achieved}}
-    %p goal: {{campaign.goal}}
-    %button{:class => "btn btn-success btn-rounded"}
-      %a{:href => "campaigns/{{campaign.id}}/payment", :style => "color: white"} Support this campaign
-    %h2 Add your commment
-    %section{"ng-controller" => "commentsCtrl"}
-      %form{"ng-show" => "user || admin", "ng-submit" => "addComment()"}
-        %label{:for => "content"}
-        %input#content{"ng-model" => "comment.content", :type => "text"}
-        %button{:type => "submit"} Add comment
-      %ul
-        %li.comment{"ng-repeat" => "comment in comments"}
-          %form{"ng-show" => "showEditComment", "ng-submit" => "editComment(comment.id); showEditComment =! showEditComment"}
-            %input{"ng-model" => "comment.content", :type => "text"}
-            %button{:type => "submit"} submit changes
-          %div.m-l-xxl.m-b
-            %p {{comment.username}}
-            %div.m-t-sm
-              %p {{comment.content}}
+%div{"ng-controller" => "campaignShow"}
+  %h1 {{campaign.title}}
+  %a{:href => "campaigns/{{campaign.id}}/payment"} Support this campaign
+  %img{:alt => "cover-photo", "ng-src" => "http://localhost:3000{{campaign.cover_photo_url}}"}
+    %img{:alt => "profile-photo", "ng-src" => "http://localhost:3000{{campaign.profile_photo_url}}"}
+      %img{:alt => "profile-photo", "ng-src" => "http://localhost:3000{{campaign.description_photo_url}}"}
+        %p
+          %iframe{"ng-src" => "{{video}}"}
+        %button{"ng-click" => "removeCampaign()", "ng-show" => "(campaign.user_id === user.id) || admin", :type => "button"} Delete campaign
+        %button{"ng-click" => "hideEditVideoUrl=!hideEditVideoUrl", "ng-init" => "hideEditVideoUrl=true", "ng-show" => "((campaign.user_id === user.id) || admin)  hideEditVideoUrl", :type => "button"} Edit video url
+        %form{"ng-hide" => "hideEditVideoUrl", "ng-submit" => "editVideoUrl(); hideEditVideoUrl=!hideEditVideoUrl"}
+          %input{:name => "edit-video", "ng-model" => "campaign.video", "ng-value" => "campaign.video", :type => "text"}
+          %p This campaign started at : {{campaign.created_at}}
+          %progress{:value => "{{campaign.achieved/campaign.goal}}"}
+          %p {{achievedPercentage}}
+          %p achieved: {{campaign.achieved}}
+          %p goal: {{campaign.goal}}
+          %h2 About this project
+          %p
+            %img{:alt => "discription-photo", "ng-src" => "{{campaign.discription_photo_file_name}}"}
             %p
-              %time-ago{"from-time" => "{{comment.created_at}}"}
-            %button{"ng-click" => "removeComment(comment.id)", "ng-show" => "(comment.user_id === user.id) || admin", :type => "button", :class => "btn btn-danger btn-rounded"} Delete
-            %button{"ng-click" => "showEditComment =! showEditComment", "ng-init" => "showEditComment = false", "ng-show" => "(comment.user_id === user.id) || admin", :type => "button", :class => "btn btn-primary btn-rounded"} Edit
+              {{campaign.description}}
+          %section{"ng-controller" => "commentsCtrl"}
+            %form{"ng-show" => "user || admin", "ng-submit" => "addComment()"}
+              %label{:for => "content"}
+              %input#content{"ng-model" => "comment.content", :type => "text"}
+                %button{:type => "submit"} Add comment
+              %ul
+                %li.comment{"ng-repeat" => "comment in comments"}
+                  %button{"ng-click" => "removeComment(comment.id)", "ng-show" => "(comment.user_id === user.id) || admin", :type => "button"} Delete
+                  %button{"ng-click" => "showEditComment =! showEditComment", "ng-init" => "showEditComment = false", "ng-show" => "(comment.user_id === user.id) || admin", :type => "button"} Edit
+                  %form{"ng-show" => "showEditComment", "ng-submit" => "editComment(comment.id); showEditComment =! showEditComment"}
+                    %input{"ng-model" => "comment.content", :type => "text"}
+                      %button{:type => "submit"} submit changes
+                    %p {{comment.username}}
+                    %p {{comment.content}}
+                    %p
+                      %time-ago{"from-time" => "{{comment.created_at}}"}
+                    %br
