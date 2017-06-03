@@ -5,12 +5,11 @@
     $locationProvider.html5Mode(true);
     $stateProvider.state({
       name: 'dashboard_layout',
-      url: '/',
       templateUrl: 'app/views/layouts/dashboard_layout.html',
-      abstract: true
+      abstract:true
     }).state({
       name: 'dashboard_layout.landing',
-      url: 'landing',
+      url: '/',
       templateUrl: 'app/views/landing/landing.html'
     }).state({
       name: 'sign_in',
