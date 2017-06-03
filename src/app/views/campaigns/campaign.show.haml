@@ -17,30 +17,33 @@
       %input{:name => "edit-video", "ng-model" => "campaign.video", "ng-value" => "campaign.video", :type => "text"}
     %p
     %p This campaign started at : {{campaign.created_at}}
-    %progress{:value => "{{campaign.achieved/campaign.goal}}"}
+    .progress.progress-bar.progress-bar-warning{"aria-valuemax" => "{{campaign.goal}}", "aria-valuemin" => "0", "aria-valuenow" => "campaign.achieved", :role => "progressbar", :style => "width:50%; height:20px; max-width:100% "} {{campaign.achieved*100/campaign.goal}}%
+    -# %progress{:value => "{{campaign.achieved/campaign.goal}}"}
     %p {{achievedPercentage}}
     %p achieved: {{campaign.achieved}}
     %p goal: {{campaign.goal}}
-    %a.btn.btn-success.btn-rounded.col-lg-6.btn-block{:href => "campaigns/{{campaign.id}}/payment", :style => "color: white"} Support this campaign
-    %h2 Add your commment
+    %button{:class => "btn btn-success btn-rounded"}
+      %a{:href => "campaigns/{{campaign.id}}/payment", :style => "color: white"} Support this campaign
+    %p Commments
     %section{"ng-controller" => "commentsCtrl"}
-      %form{"ng-show" => "user || admin", "ng-submit" => "addComment()"}
-        %label{:for => "content"}
-        %input#content{"ng-model" => "comment.content", :type => "text"}
-        %button{:type => "submit"} Add comment
       %ul
-        %li.comment{"ng-repeat" => "comment in comments"}
+        %li.comment{"ng-repeat" => "comment in comments", :style => "list-style-type: none"}
           %form{"ng-show" => "showEditComment", "ng-submit" => "editComment(comment.id); showEditComment =! showEditComment"}
             %input{"ng-model" => "comment.content", :type => "text"}
             %button{:type => "submit"} submit changes
-          %div.m-l-xxl.m-b
-            %p {{comment.username}}
+          %div.m-l-xxl.m-b.container
+            %strong {{comment.username}}
             %div.m-t-sm
               %p {{comment.content}}
             %p
-              %time-ago{"from-time" => "{{comment.created_at}}"}
+              %time-ago{"from-time" => "{{comment.created_at}}", :class => "text-muted text-xs block m-t-xs"}
             %button{"ng-click" => "removeComment(comment.id)", "ng-show" => "(comment.user_id === user.id) || admin", :type => "button", :class => "btn btn-danger btn-rounded"} Delete
             %button{"ng-click" => "showEditComment =! showEditComment", "ng-init" => "showEditComment = false", "ng-show" => "(comment.user_id === user.id) || admin", :type => "button", :class => "btn btn-primary btn-rounded"} Edit
+      %form{"ng-show" => "user || admin", "ng-submit" => "addComment()"}
+        %p Leave your comment
+        .container
+          %textarea#content{"ng-model" => "comment.content", :type => "text", :row => "5", :placeholder => "leave your comment", :class => "form-control"}
+          %button{:type => "submit", :class => "btn btn-success"} Add comment
   -# %div{:style => "background-image:url('{{url}}{{campaign.cover_photo_url}}'); background-size:cover"}
   -# .wrapper-lg.bg-white-opacity
   -#   .row.m-t
