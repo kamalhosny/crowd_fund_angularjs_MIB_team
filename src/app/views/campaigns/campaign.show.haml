@@ -1,29 +1,33 @@
 %div.container.m-t-xx{"ng-controller" => "campaignShow", :class => " center"}
   %div.wrapper-xl{:class => "blog-post"}
     %div{:class => "panel"}
-      %h1.m-t-xl.bg-black.text-lt{:style => "text-align: center", :class => "m-t-none"} {{campaign.title}}
       %div.cover-show.w-full{:style => 'background-image: url("{{url}}{{campaign.cover_photo_url}}")'}
-        %img.img-circle.m-l-xl.m-t-lg.b-a{:alt => "profile-photo", "ng-src" => "{{url}}{{campaign.profile_photo_url}}"}
-      %div.col-lg-4
-        %img{:alt => "description-photo", "ng-src" => "{{url}}{{campaign.description_photo_url}}", :style => "display: block; width: 100%"}
-    %div{:class => "wrapper-lg", :style => "clear: left"}
-      %p{:class => "m-t-none", :style => "font-size: 20px"} {{campaign.description}}
-    %p
-      %iframe{"ng-src" => "{{video}}", :class => "img-full", :style => "height: 500px" }
-    %p{:class => "margin: 0 auto"}
-      %button{"ng-click" => "removeCampaign()", "ng-show" => "(campaign.user_id === user.id) || admin", :type => "button", :class => "btn btn-danger btn-rounded"} Delete campaign
-      %button{"ng-click" => "hideEditVideoUrl=!hideEditVideoUrl", "ng-init" => "hideEditVideoUrl=true", "ng-show" => "((campaign.user_id === user.id) || admin) && hideEditVideoUrl", :type => "button", :class => "btn btn-primary btn-rounded"} Edit video url
-    %form{"ng-hide" => "hideEditVideoUrl", "ng-submit" => "editVideoUrl(); hideEditVideoUrl=!hideEditVideoUrl"}
-      %input{:name => "edit-video", "ng-model" => "campaign.video", "ng-value" => "campaign.video", :type => "text"}
-    %p
+        %div.profile-div
+          %img.profile-campaign{:alt => "profile-photo", "ng-src" => "{{url}}{{campaign.profile_photo_url}}"}
+    %h1.title-show{:style => "text-align: center"} {{campaign.title}}
+  %div.content-container
+    %div.video-container.clearfix
+      %iframe.video-show{"ng-src" => "{{video}}", :class => "img-full",:style => "height: 300px" }
+      %div.link-show
+        .progress.progress-bar.progress-bar-warning{"aria-valuemax" => "{{campaign.goal}}", "aria-valuemin" => "0", "aria-valuenow" => "campaign.achieved", :role => "progressbar", :style => "width:{{campaign.achieved*100/campaign.goal}}%; height:20px; max-width:100% "} {{campaign.achieved*100/campaign.goal}}%
+        %p.achieved achieved: {{campaign.achieved}}
+        %p.goal goal: {{campaign.goal}}
+        %button{:class => "btn btn-warning btn-rounded"}
+          %a{:href => "campaigns/{{campaign.id}}/payment", :style => "width:100%,color: white"} Support this campaign
+  %p{:class => "margin: 0 auto"}
+    %button{"ng-click" => "removeCampaign()", "ng-show" => "(campaign.user_id === user.id) || admin", :type => "button", :class => "btn btn-danger btn-rounded"} Delete campaign
+    %button{"ng-click" => "hideEditVideoUrl=!hideEditVideoUrl", "ng-init" => "hideEditVideoUrl=true", "ng-show" => "((campaign.user_id === user.id) || admin) && hideEditVideoUrl", :type => "button", :class => "btn btn-primary btn-rounded"} Edit video url
+
+  %form{"ng-hide" => "hideEditVideoUrl", "ng-submit" => "editVideoUrl(); hideEditVideoUrl=!hideEditVideoUrl"}
+    %input{:name => "edit-video", "ng-model" => "campaign.video", "ng-value" => "campaign.video", :type => "text"}
+  %div.col-lg-4
+    %img{:alt => "description-photo", "ng-src" => "{{url}}{{campaign.description_photo_url}}", :style => "display: block; width: 100%"}
+  %h2 About this Campaign
+  %div{:class => "wrapper-lg", :style => "clear: left"}
+    %p{:class => "m-t-none", :style => "font-size: 20px"} {{campaign.description}}
+
     %p This campaign started at : {{campaign.created_at}}
-    .progress.progress-bar.progress-bar-warning{"aria-valuemax" => "{{campaign.goal}}", "aria-valuemin" => "0", "aria-valuenow" => "campaign.achieved", :role => "progressbar", :style => "width:50%; height:20px; max-width:100% "} {{campaign.achieved*100/campaign.goal}}%
     -# %progress{:value => "{{campaign.achieved/campaign.goal}}"}
-    %p {{achievedPercentage}}
-    %p achieved: {{campaign.achieved}}
-    %p goal: {{campaign.goal}}
-    %button{:class => "btn btn-success btn-rounded"}
-      %a{:href => "campaigns/{{campaign.id}}/payment", :style => "color: white"} Support this campaign
     %p Commments
     %section{"ng-controller" => "commentsCtrl"}
       %ul
@@ -44,29 +48,3 @@
         .container
           %textarea#content{"ng-model" => "comment.content", :type => "text", :row => "5", :placeholder => "leave your comment", :class => "form-control"}
           %button{:type => "submit", :class => "btn btn-success"} Add comment
-  -# %div{:style => "background-image:url('{{url}}{{campaign.cover_photo_url}}'); background-size:cover"}
-  -# .wrapper-lg.bg-white-opacity
-  -#   .row.m-t
-  -#     .col-sm-7
-  -#       %a.thumb-lg.pull-left.m-r{:href => "/users/{{campaign.user_id}}"}
-  -#         %img.img-circle{:src => "{{url}}{{campaign.profile_photo_url}}"}
-  -#       .clear.m-b
-  -#         .m-b.m-t-sm
-  -#           %span.h3.text-black {{campaign.title}}
-  -#           %small.m-l London, UK
-  -#         %p.m-b
-  -#           %a.btn.btn-sm.btn-bg.btn-rounded.btn-default.btn-icon{:href => "{{campaign.github}}"}
-  -#             %i.fa.fa-github
-  -#           %a.btn.btn-sm.btn-bg.btn-rounded.btn-default.btn-icon{:href => "{{campaign.facebook}}"}
-  -#             %i.fa.fa-facebook
-  -#           %a.btn.btn-sm.btn-bg.btn-rounded.btn-default.btn-icon{:href => "{{campaign.linked_in}}"}
-  -#             %i.fa.fa-linkedin
-  -#         %a.btn.btn-sm.btn-success.btn-rounded{:href => "campaigns/{{campaign.id}}/payment"} support this campaign
-  -#     -# .col-sm-5
-  -#     -#   .pull-right.pull-none-xs.text-center
-  -#     -#     %a.m-b-md.inline.m{:href => ""}
-  -#     -#       %span.h3.block.font-bold 2k
-  -#     -#       %small Followers
-  -#     -#     %a.m-b-md.inline.m{:href => ""}
-  -#     -#       %span.h3.block.font-bold 250
-  -#     -#       %small Following

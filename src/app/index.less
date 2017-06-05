@@ -23,6 +23,7 @@
 
 }
 .cover-show{
+  position: relative;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -35,15 +36,34 @@
    width: 150px;
    background-color: #fff;
    overflow: hidden;
-
+   box-shadow: 6px 7px 20px 1px #080808;
+   top: 200px;
+   left: 5%;
  }
+.content-container{
+  margin-top: 20px
+}
+.video-show{
+  width:50%;
+  float:left;
+}
+.video-container{
+  width: 100%
+}
 .profile-campaign{
-  height: 150px;
+  height: 100%;
   position: absolute;
   top:50%;
-  margin-top: -75px;
-  left:0;
-
+  margin-top: -100px;
+}
+.link-show{
+  float:right;
+  margin-right: 20%;
+  margin-top: 10%;
+}
+.achieved,.goal{
+  font-size: 24px;
+  clear:both;
 }
 section h1{
   margin-left: 50px;
@@ -128,7 +148,7 @@ section h1{
       }
       >p{
         font-size: 15px;
-        clear:left;
+        clear:both;
       }
 
     }

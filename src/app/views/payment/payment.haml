@@ -37,6 +37,12 @@
               .row
                 .col-xs-12
                   .form-group
+                    %label{:for => ""} Support with
+                      .input-group
+                      %input.form-control{"ng-model" => "amount", :type => "text"}
+              .row
+                .col-xs-12
+                  .form-group
                     %label CARD NUMBER
                     .input-group
                       %input.form-control{:placeholder => "Card Number",:name => "number", "ng-class" => "type", "ng-model" => "number", "payments-format" => "card", "payments-length" => "card", "payments-type-model" => "type", "payments-validate" => "card", :type => "text"}
