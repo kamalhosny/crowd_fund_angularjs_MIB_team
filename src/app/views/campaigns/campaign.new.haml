@@ -1,26 +1,26 @@
-%div{"ng-controller" => "campaignNew", "ng-init" => "campaign = {cover_photo: {}}", :class => "panel panel-default container w-auto-xs"}
-  %div{:class => "panel-heading font-bold", :style => "text-align: center"} Ceate Campaign
-  %form{"ng-submit" => "addCampaign()", :class => "form-horizontal ng-pristine ng-valid ng-valid-date ng-valid-required ng-valid-date-disabled"}
-    %div{:class => "container w-xxl w-auto-xs"}
+%div.m-t-lg{"ng-controller" => "campaignNew", "ng-init" => "campaign = {cover_photo: {}}", :class => "panel panel-default container w-auto-xs"}
+  %div.bg-dark{:class => "panel-heading font-bold", :style => "text-align: center"} Ceate Campaign
+  %form.wrapper-lg{"ng-submit" => "addCampaign()", :class => "form-horizontal ng-pristine ng-valid ng-valid-date ng-valid-required ng-valid-date-disabled"}
+    %div.m-b-md{:class => "container w-xxl w-auto-xs"}
       -# %label{:for => "title", :class => "col-sm-2 control-label"} title
       %input#title{:placeholder => "Title", :class => "form-control ng-pristine ng-untouched w-xxl ng-invalid ng-invalid-required ng-valid-pattern", :name => "campaign[title]", "ng-model" => "campaign.title", :required => "", :type => "text"}
-    %div{:class => "container w-xxl w-auto-xs"}
+    %div.m-b-md{:class => "container w-xxl w-auto-xs"}
       -# %label{:for => "description"} description
       %textarea#description{:placeholder => "Description",:class => "form-control ng-pristine w-xxl ng-untouched ng-invalid ng-invalid-required ng-valid-pattern", :cols => "80", :name => "campaign[description]", "ng-model" => "campaign.description", :required => "", :rows => "4"}
-    %div{:class => "container w-xxl w-auto-xs"}
+    %div.m-b-md{:class => "container w-xxl w-auto-xs"}
       -# %label{:for => "goal"} goal
       %input#goal{:placeholder => "Goal",:class => "form-control ng-pristine ng-untouched w-xxl ng-invalid ng-invalid-required ng-valid-pattern", :name => "campaign[goal]", "ng-model" => "campaign.goal", :required => "", :type => "number"}
-    %div{:class => "container w-xxl w-auto-xs"}
+    %div.m-b-md{:class => "container w-xxl w-auto-xs"}
       -# %label{:for => "video"} video link
       %input{:placeholder => "Video Link",:class => "form-control ng-pristine ng-untouched ng-invalid w-xxl ng-invalid-required ng-valid-pattern", :name => "campaign[url]", "ng-model" => "campaign.video", :type => "url"}
-    %div{:class => "container w-xxl w-auto-xs"}
+    %div.m-b-md{:class => "container w-xxl w-auto-xs"}
       %label Upload a Cover Photo
       %input#file-input{:class => "form-control ng-pristine ng-untouched w-xxl ng-invalid ng-invalid-required ng-valid-pattern", "ng-model" => "campaign.cover_photo", "ngf-select" => "", :type => "file"}
-    %div{:class => "container w-xxl w-auto-xs"}
+    %div.m-b-md{:class => "container w-xxl w-auto-xs"}
       %label Upload a profile Photo
       %input#file-input{:class => "form-control ng-pristine ng-untouched w-xxl ng-invalid ng-invalid-required ng-valid-pattern", "ng-model" => "campaign.profile_photo", "ngf-select" => "", :type => "file"}
-    %div{:class => "container w-xxl w-auto-xs"}
+    %div.m-b-md{:class => "container w-xxl w-auto-xs"}
       %label Upload a description Photo
       %input#file-input{:class => "form-control ng-pristine ng-untouched w-xxl ng-invalid ng-invalid-required ng-valid-pattern", "ng-model" => "campaign.description_photo", "ngf-select" => "", :type => "file"}
-    %div{:class => "container w-xxl w-auto-xs"}
+    %div.m-b-md{:class => "container w-xxl w-auto-xs"}
       %button{:class => "container w-xxl w-auto-xs btn btn-info"} create campaign
