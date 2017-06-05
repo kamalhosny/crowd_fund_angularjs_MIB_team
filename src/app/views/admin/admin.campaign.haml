@@ -1,0 +1,6 @@
+%div{"ng-controller" => "adminCampaignCtrl"}
+  %ul
+    %li{"ng-repeat" => "campaign in campaigns"}
+      %a{:href => "/campaigns/{{campaign.id}}"}
+        %img{:alt => "profile-photo", "ng-src" => "{{campaign.profile_photo_file_name}}"}/
+      %button{"ng-click" => "removeCampaign(campaign.id)", :type => "button"} Delete campaign

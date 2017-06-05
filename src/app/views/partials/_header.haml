@@ -1,0 +1,33 @@
+%nav.navbar.navbar-default.navi.ng-scope.bg-dark{:role => "navigation"}
+  %div.container
+    .navbar-header
+      %button.navbar-toggle{"ng-click" => "isNavCollapsed = !isNavCollapsed", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand.no-padder.text-ellipsis.text-lt.m-t-xs{:href => "/"}
+        %img{:alt => "App logo", :src => "assets/images/crowdfund.png"}>
+        Makinah-Fund
+
+      -# %a.navbar-brand.no-padder.text-ellipsis.text-lt.m-t-xs{:href => "/"} AlMakinah-CrowdFund
+    .collapse.navbar-collapse{"uib-collapse" => "isNavCollapsed"}
+      %ul.nav.navbar-nav.m-t-sm
+        %li{"ng-class" => "{ active: isActive('/campaigns')}"}
+          %a.text-lt{:href => "/campaigns"} Explore
+        %li{"ng-class" => "{ active: isActive('/campaigns/new')}"}
+          %a.text-lt{:href => "/campaigns/new"} Start a Campaign
+        %li
+          %a.text-lt{:href => ""} About Us
+      %ul.nav.navbar-nav.navbar-right
+        %li{"ng-class" => "{ active: isActive('/sign_in')}"}
+          %a.text-lt{"ng-hide" => "user || admin", "ui-sref" => "dashboard_layout.sign_in", "ui-sref-active" => "active"} Sign In
+        %li{"ng-class" => "{ active: isActive('/sign_up')}"}
+          %a.text-lt{"ng-hide" => "user || admin", "ui-sref" => "dashboard_layout.sign_up", "ui-sref-active" => "active"} Sign Up
+        %li
+          %a.text-lt.m-t-sm.navbar-brand{:href => "/users/{{user.id}}"} {{user.username}}
+
+        %li
+          %a.btn.btn-warning.m-sm.m-r-sm{"ng-click" => "handleSignOutBtnClick()", "ng-show" => "user"} Sign out
+        %li
+          %a.btn.btn-primary.m-sm.m-r-sm{"ng-click" => "handleSignOutBtnClickAdmin()", "ng-show" => "admin"} Sign out
